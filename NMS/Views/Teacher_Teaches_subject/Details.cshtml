@@ -1,0 +1,38 @@
+﻿@model NMS.Models.Teacher_Teaches_subject
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Teacher_Teaches_subject</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Subject.SubName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Subject.SubName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Teacher.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Teacher.Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+<div>
+    @Html.ActionLink("Back to AdminPortal ", "index", "AdminPortal")
+
+</div>

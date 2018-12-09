@@ -1,0 +1,2345 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="NMSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Class">
+          <Key>
+            <PropertyRef Name="classID" />
+          </Key>
+          <Property Name="classID" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ClassName" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Class_Has_Subject">
+          <Key>
+            <PropertyRef Name="CSRating" />
+            <PropertyRef Name="ClassID" />
+            <PropertyRef Name="SubID" />
+          </Key>
+          <Property Name="CSRating" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="ClassID" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="SubID" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GroupMember">
+          <Key>
+            <PropertyRef Name="GroupID" />
+            <PropertyRef Name="USN" />
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="GroupID" Type="int" Nullable="false" />
+          <Property Name="USN" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GroupMemberTeacher">
+          <Key>
+            <PropertyRef Name="GroupID" />
+            <PropertyRef Name="TID" />
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="GroupID" Type="int" Nullable="false" />
+          <Property Name="TID" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GroupMessage">
+          <Key>
+            <PropertyRef Name="GroupID" />
+            <PropertyRef Name="USN" />
+            <PropertyRef Name="message" />
+            <PropertyRef Name="Time" />
+          </Key>
+          <Property Name="GroupID" Type="int" Nullable="false" />
+          <Property Name="USN" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="message" Type="varchar" MaxLength="750" Nullable="false" />
+          <Property Name="Time" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Media" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="GroupMessageTeacher">
+          <Key>
+            <PropertyRef Name="GroupID" />
+            <PropertyRef Name="TID" />
+            <PropertyRef Name="message" />
+            <PropertyRef Name="Time" />
+          </Key>
+          <Property Name="GroupID" Type="int" Nullable="false" />
+          <Property Name="TID" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="message" Type="varchar" MaxLength="750" Nullable="false" />
+          <Property Name="Time" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Media" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Groups">
+          <Key>
+            <PropertyRef Name="GroupID" />
+          </Key>
+          <Property Name="GroupID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GroupName" Type="varchar" MaxLength="100" />
+          <Property Name="GroupIcon" Type="varbinary(max)" />
+          <Property Name="classID" Type="varchar" MaxLength="20" />
+          <Property Name="subID" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Module">
+          <Key>
+            <PropertyRef Name="ModuleID" />
+          </Key>
+          <Property Name="ModuleID" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ModuleName" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="NGroupMemberTeacher">
+          <Key>
+            <PropertyRef Name="GroupID" />
+            <PropertyRef Name="TID" />
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="GroupID" Type="int" Nullable="false" />
+          <Property Name="TID" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NGroupMemberTeachers">
+          <Key>
+            <PropertyRef Name="GroupID" />
+            <PropertyRef Name="TID" />
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="GroupID" Type="int" Nullable="false" />
+          <Property Name="TID" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NGroupMessages">
+          <Key>
+            <PropertyRef Name="GroupID" />
+            <PropertyRef Name="USN" />
+            <PropertyRef Name="Time" />
+          </Key>
+          <Property Name="GroupID" Type="int" Nullable="false" />
+          <Property Name="USN" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="message" Type="varchar" MaxLength="750" />
+          <Property Name="Time" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Media" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="NGroupMessageTeacher">
+          <Key>
+            <PropertyRef Name="GroupID" />
+            <PropertyRef Name="TID" />
+            <PropertyRef Name="Time" />
+          </Key>
+          <Property Name="GroupID" Type="int" Nullable="false" />
+          <Property Name="TID" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="message" Type="varchar" MaxLength="750" />
+          <Property Name="Time" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Media" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="NGroupMessageTeachers">
+          <Key>
+            <PropertyRef Name="GroupID" />
+            <PropertyRef Name="TID" />
+            <PropertyRef Name="Time" />
+          </Key>
+          <Property Name="GroupID" Type="int" Nullable="false" />
+          <Property Name="TID" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="message" Type="varchar" MaxLength="750" />
+          <Property Name="Time" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Media" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="NGroups">
+          <Key>
+            <PropertyRef Name="GroupID" />
+          </Key>
+          <Property Name="GroupID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GroupName" Type="varchar" MaxLength="100" />
+          <Property Name="GroupIcon" Type="varbinary(max)" />
+          <Property Name="classID" Type="varchar" MaxLength="20" />
+          <Property Name="subID" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Notes">
+          <Key>
+            <PropertyRef Name="NotesID" />
+          </Key>
+          <Property Name="TID" Type="varchar" MaxLength="20" />
+          <Property Name="ModuleID" Type="varchar" MaxLength="20" />
+          <Property Name="SubID" Type="varchar" MaxLength="20" />
+          <Property Name="ClassID" Type="varchar" MaxLength="20" />
+          <Property Name="NotesID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PDFFile" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="USN" />
+          </Key>
+          <Property Name="USN" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="30" />
+          <Property Name="Password" Type="varchar" MaxLength="20" />
+          <Property Name="Email" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Subject">
+          <Key>
+            <PropertyRef Name="SubID" />
+          </Key>
+          <Property Name="SubID" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="SubName" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Subject_Has_Module">
+          <Key>
+            <PropertyRef Name="SMRating" />
+            <PropertyRef Name="ModuleID" />
+            <PropertyRef Name="SubID" />
+          </Key>
+          <Property Name="SMRating" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="ModuleID" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="SubID" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Teacher">
+          <Key>
+            <PropertyRef Name="TID" />
+          </Key>
+          <Property Name="TID" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="30" />
+          <Property Name="Password" Type="varchar" MaxLength="20" />
+          <Property Name="Email" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Teacher_Teaches_subject">
+          <Key>
+            <PropertyRef Name="TSRating" />
+            <PropertyRef Name="TID" />
+            <PropertyRef Name="SubID" />
+          </Key>
+          <Property Name="TSRating" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="TID" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="SubID" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Class_Has__Class__164452B1">
+          <End Role="Class" Type="Self.Class" Multiplicity="1" />
+          <End Role="Class_Has_Subject" Type="Self.Class_Has_Subject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="classID" />
+            </Principal>
+            <Dependent Role="Class_Has_Subject">
+              <PropertyRef Name="ClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Class_Has__SubID__173876EA">
+          <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
+          <End Role="Class_Has_Subject" Type="Self.Class_Has_Subject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="SubID" />
+            </Principal>
+            <Dependent Role="Class_Has_Subject">
+              <PropertyRef Name="SubID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GroupMemb__Group__34C8D9D1">
+          <End Role="Groups" Type="Self.Groups" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="GroupMember" Type="Self.GroupMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="GroupID" />
+            </Principal>
+            <Dependent Role="GroupMember">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GroupMemb__Group__71D1E811">
+          <End Role="Groups" Type="Self.Groups" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="GroupMemberTeacher" Type="Self.GroupMemberTeacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="GroupID" />
+            </Principal>
+            <Dependent Role="GroupMemberTeacher">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GroupMember__TID__72C60C4A">
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="GroupMemberTeacher" Type="Self.GroupMemberTeacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="TID" />
+            </Principal>
+            <Dependent Role="GroupMemberTeacher">
+              <PropertyRef Name="TID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GroupMember__USN__35BCFE0A">
+          <End Role="Student" Type="Self.Student" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="GroupMember" Type="Self.GroupMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="USN" />
+            </Principal>
+            <Dependent Role="GroupMember">
+              <PropertyRef Name="USN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GroupMess__Group__5DCAEF64">
+          <End Role="Groups" Type="Self.Groups" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="GroupMessage" Type="Self.GroupMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="GroupID" />
+            </Principal>
+            <Dependent Role="GroupMessage">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GroupMess__Group__6477ECF3">
+          <End Role="Groups" Type="Self.Groups" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="GroupMessageTeacher" Type="Self.GroupMessageTeacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="GroupID" />
+            </Principal>
+            <Dependent Role="GroupMessageTeacher">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GroupMessag__TID__656C112C">
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="GroupMessageTeacher" Type="Self.GroupMessageTeacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="TID" />
+            </Principal>
+            <Dependent Role="GroupMessageTeacher">
+              <PropertyRef Name="TID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GroupMessag__USN__5EBF139D">
+          <End Role="Student" Type="Self.Student" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="GroupMessage" Type="Self.GroupMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="USN" />
+            </Principal>
+            <Dependent Role="GroupMessage">
+              <PropertyRef Name="USN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Groups__classID__2F10007B">
+          <End Role="Class" Type="Self.Class" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Groups" Type="Self.Groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="classID" />
+            </Principal>
+            <Dependent Role="Groups">
+              <PropertyRef Name="classID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Groups__subID__300424B4">
+          <End Role="Subject" Type="Self.Subject" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Groups" Type="Self.Groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="SubID" />
+            </Principal>
+            <Dependent Role="Groups">
+              <PropertyRef Name="subID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NGroupMem__Group__2180FB33">
+          <End Role="Groups" Type="Self.Groups" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="NGroupMemberTeacher" Type="Self.NGroupMemberTeacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="GroupID" />
+            </Principal>
+            <Dependent Role="NGroupMemberTeacher">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NGroupMem__Group__37703C52">
+          <End Role="NGroups" Type="Self.NGroups" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="NGroupMemberTeachers" Type="Self.NGroupMemberTeachers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NGroups">
+              <PropertyRef Name="GroupID" />
+            </Principal>
+            <Dependent Role="NGroupMemberTeachers">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NGroupMembe__TID__22751F6C">
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="NGroupMemberTeacher" Type="Self.NGroupMemberTeacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="TID" />
+            </Principal>
+            <Dependent Role="NGroupMemberTeacher">
+              <PropertyRef Name="TID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NGroupMembe__TID__3864608B">
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="NGroupMemberTeachers" Type="Self.NGroupMemberTeachers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="TID" />
+            </Principal>
+            <Dependent Role="NGroupMemberTeachers">
+              <PropertyRef Name="TID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NGroupMes__Group__2739D489">
+          <End Role="Groups" Type="Self.Groups" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="NGroupMessageTeacher" Type="Self.NGroupMessageTeacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="GroupID" />
+            </Principal>
+            <Dependent Role="NGroupMessageTeacher">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NGroupMes__Group__3D2915A8">
+          <End Role="NGroups" Type="Self.NGroups" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="NGroupMessages" Type="Self.NGroupMessages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NGroups">
+              <PropertyRef Name="GroupID" />
+            </Principal>
+            <Dependent Role="NGroupMessages">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NGroupMes__Group__42E1EEFE">
+          <End Role="NGroups" Type="Self.NGroups" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="NGroupMessageTeachers" Type="Self.NGroupMessageTeachers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NGroups">
+              <PropertyRef Name="GroupID" />
+            </Principal>
+            <Dependent Role="NGroupMessageTeachers">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NGroupMessa__TID__282DF8C2">
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="NGroupMessageTeacher" Type="Self.NGroupMessageTeacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="TID" />
+            </Principal>
+            <Dependent Role="NGroupMessageTeacher">
+              <PropertyRef Name="TID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NGroupMessa__TID__43D61337">
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="NGroupMessageTeachers" Type="Self.NGroupMessageTeachers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="TID" />
+            </Principal>
+            <Dependent Role="NGroupMessageTeachers">
+              <PropertyRef Name="TID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NGroupMessa__USN__3E1D39E1">
+          <End Role="Student" Type="Self.Student" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="NGroupMessages" Type="Self.NGroupMessages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="USN" />
+            </Principal>
+            <Dependent Role="NGroupMessages">
+              <PropertyRef Name="USN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NGroups__classID__1BC821DD">
+          <End Role="Class" Type="Self.Class" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="NGroups" Type="Self.NGroups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="classID" />
+            </Principal>
+            <Dependent Role="NGroups">
+              <PropertyRef Name="classID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NGroups__subID__1CBC4616">
+          <End Role="Subject" Type="Self.Subject" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="NGroups" Type="Self.NGroups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="SubID" />
+            </Principal>
+            <Dependent Role="NGroups">
+              <PropertyRef Name="subID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Notes__ClassID__286302EC">
+          <End Role="Class" Type="Self.Class" Multiplicity="0..1" />
+          <End Role="Notes" Type="Self.Notes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="classID" />
+            </Principal>
+            <Dependent Role="Notes">
+              <PropertyRef Name="ClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Notes__ModuleID__267ABA7A">
+          <End Role="Module" Type="Self.Module" Multiplicity="0..1" />
+          <End Role="Notes" Type="Self.Notes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Module">
+              <PropertyRef Name="ModuleID" />
+            </Principal>
+            <Dependent Role="Notes">
+              <PropertyRef Name="ModuleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Notes__SubID__276EDEB3">
+          <End Role="Subject" Type="Self.Subject" Multiplicity="0..1" />
+          <End Role="Notes" Type="Self.Notes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="SubID" />
+            </Principal>
+            <Dependent Role="Notes">
+              <PropertyRef Name="SubID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Notes__TID__25869641">
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="0..1" />
+          <End Role="Notes" Type="Self.Notes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="TID" />
+            </Principal>
+            <Dependent Role="Notes">
+              <PropertyRef Name="TID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Subject_H__Modul__1FCDBCEB">
+          <End Role="Module" Type="Self.Module" Multiplicity="1" />
+          <End Role="Subject_Has_Module" Type="Self.Subject_Has_Module" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Module">
+              <PropertyRef Name="ModuleID" />
+            </Principal>
+            <Dependent Role="Subject_Has_Module">
+              <PropertyRef Name="ModuleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Subject_H__SubID__20C1E124">
+          <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
+          <End Role="Subject_Has_Module" Type="Self.Subject_Has_Module" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="SubID" />
+            </Principal>
+            <Dependent Role="Subject_Has_Module">
+              <PropertyRef Name="SubID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Teacher_T__SubID__0DAF0CB0">
+          <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
+          <End Role="Teacher_Teaches_subject" Type="Self.Teacher_Teaches_subject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="SubID" />
+            </Principal>
+            <Dependent Role="Teacher_Teaches_subject">
+              <PropertyRef Name="SubID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Teacher_Tea__TID__0CBAE877">
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="1" />
+          <End Role="Teacher_Teaches_subject" Type="Self.Teacher_Teaches_subject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="TID" />
+            </Principal>
+            <Dependent Role="Teacher_Teaches_subject">
+              <PropertyRef Name="TID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="AddGroupMemberTeacherss" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GroupID" Type="varchar" Mode="In" />
+          <Parameter Name="TID" Type="varchar" Mode="In" />
+          <Parameter Name="username" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="AddNotes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TID" Type="varchar" Mode="In" />
+          <Parameter Name="ModuleID" Type="varchar" Mode="In" />
+          <Parameter Name="SubID" Type="varchar" Mode="In" />
+          <Parameter Name="ClassID" Type="varchar" Mode="In" />
+          <Parameter Name="PDFFile" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="CreateGroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GroupID" Type="varchar" Mode="In" />
+          <Parameter Name="GroupName" Type="varchar" Mode="In" />
+          <Parameter Name="GroupIcon" Type="varbinary(max)" Mode="In" />
+          <Parameter Name="classID" Type="varchar" Mode="In" />
+          <Parameter Name="subID" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="CreateGroupMessageTeacher" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="groupid" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetAllFilesByOrder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tid" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetAllGroupMessage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GroupID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetGroupChat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tid" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetTeachersNotes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="InsertMessageIntoGroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GroupID" Type="int" Mode="In" />
+          <Parameter Name="TID" Type="varchar" Mode="In" />
+          <Parameter Name="message" Type="varchar" Mode="In" />
+          <Parameter Name="Time" Type="time" Mode="In" />
+          <Parameter Name="Media" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="NAddGroupMemberTeachers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GroupID" Type="varchar" Mode="In" />
+          <Parameter Name="TID" Type="varchar" Mode="In" />
+          <Parameter Name="username" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="NCreateGroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GroupName" Type="varchar" Mode="In" />
+          <Parameter Name="GroupIcon" Type="varbinary(max)" Mode="In" />
+          <Parameter Name="classID" Type="varchar" Mode="In" />
+          <Parameter Name="subID" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="NEInsertGroupMemberTeachers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GroupID" Type="int" Mode="In" />
+          <Parameter Name="TID" Type="varchar" Mode="In" />
+          <Parameter Name="username" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="NGetAllGroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="NGetGroupID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GroupName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="NGetGroupIDs" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GroupName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="NInsertGroupMemberTeacher" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GroupID" Type="int" Mode="In" />
+          <Parameter Name="TID" Type="varchar" Mode="In" />
+          <Parameter Name="username" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="NInsertGroupMemberTeachers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GroupID" Type="int" Mode="In" />
+          <Parameter Name="TID" Type="varchar" Mode="In" />
+          <Parameter Name="username" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="NMakeGroups" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GroupName" Type="varchar" Mode="In" />
+          <Parameter Name="GroupIcon" Type="varbinary(max)" Mode="In" />
+          <Parameter Name="classID" Type="varchar" Mode="In" />
+          <Parameter Name="subID" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="NNInsertGroupMemberTeachers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GroupID" Type="int" Mode="In" />
+          <Parameter Name="TID" Type="varchar" Mode="In" />
+          <Parameter Name="username" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ProjectGroupMessageTeacher" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="groupid" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ShowGroupMessageTeacher" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GroupID" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="NMSModelStoreContainer">
+          <EntitySet Name="Class" EntityType="Self.Class" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Class_Has_Subject" EntityType="Self.Class_Has_Subject" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GroupMember" EntityType="Self.GroupMember" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GroupMemberTeacher" EntityType="Self.GroupMemberTeacher" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GroupMessage" EntityType="Self.GroupMessage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GroupMessageTeacher" EntityType="Self.GroupMessageTeacher" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Groups" EntityType="Self.Groups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Module" EntityType="Self.Module" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NGroupMemberTeacher" EntityType="Self.NGroupMemberTeacher" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NGroupMemberTeachers" EntityType="Self.NGroupMemberTeachers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NGroupMessages" EntityType="Self.NGroupMessages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NGroupMessageTeacher" EntityType="Self.NGroupMessageTeacher" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NGroupMessageTeachers" EntityType="Self.NGroupMessageTeachers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NGroups" EntityType="Self.NGroups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Notes" EntityType="Self.Notes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subject" EntityType="Self.Subject" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subject_Has_Module" EntityType="Self.Subject_Has_Module" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Teacher" EntityType="Self.Teacher" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Teacher_Teaches_subject" EntityType="Self.Teacher_Teaches_subject" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Class_Has__Class__164452B1" Association="Self.FK__Class_Has__Class__164452B1">
+            <End Role="Class" EntitySet="Class" />
+            <End Role="Class_Has_Subject" EntitySet="Class_Has_Subject" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Class_Has__SubID__173876EA" Association="Self.FK__Class_Has__SubID__173876EA">
+            <End Role="Subject" EntitySet="Subject" />
+            <End Role="Class_Has_Subject" EntitySet="Class_Has_Subject" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GroupMemb__Group__34C8D9D1" Association="Self.FK__GroupMemb__Group__34C8D9D1">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="GroupMember" EntitySet="GroupMember" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GroupMemb__Group__71D1E811" Association="Self.FK__GroupMemb__Group__71D1E811">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="GroupMemberTeacher" EntitySet="GroupMemberTeacher" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GroupMember__TID__72C60C4A" Association="Self.FK__GroupMember__TID__72C60C4A">
+            <End Role="Teacher" EntitySet="Teacher" />
+            <End Role="GroupMemberTeacher" EntitySet="GroupMemberTeacher" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GroupMember__USN__35BCFE0A" Association="Self.FK__GroupMember__USN__35BCFE0A">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="GroupMember" EntitySet="GroupMember" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GroupMess__Group__5DCAEF64" Association="Self.FK__GroupMess__Group__5DCAEF64">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="GroupMessage" EntitySet="GroupMessage" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GroupMess__Group__6477ECF3" Association="Self.FK__GroupMess__Group__6477ECF3">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="GroupMessageTeacher" EntitySet="GroupMessageTeacher" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GroupMessag__TID__656C112C" Association="Self.FK__GroupMessag__TID__656C112C">
+            <End Role="Teacher" EntitySet="Teacher" />
+            <End Role="GroupMessageTeacher" EntitySet="GroupMessageTeacher" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GroupMessag__USN__5EBF139D" Association="Self.FK__GroupMessag__USN__5EBF139D">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="GroupMessage" EntitySet="GroupMessage" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Groups__classID__2F10007B" Association="Self.FK__Groups__classID__2F10007B">
+            <End Role="Class" EntitySet="Class" />
+            <End Role="Groups" EntitySet="Groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Groups__subID__300424B4" Association="Self.FK__Groups__subID__300424B4">
+            <End Role="Subject" EntitySet="Subject" />
+            <End Role="Groups" EntitySet="Groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NGroupMem__Group__2180FB33" Association="Self.FK__NGroupMem__Group__2180FB33">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="NGroupMemberTeacher" EntitySet="NGroupMemberTeacher" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NGroupMem__Group__37703C52" Association="Self.FK__NGroupMem__Group__37703C52">
+            <End Role="NGroups" EntitySet="NGroups" />
+            <End Role="NGroupMemberTeachers" EntitySet="NGroupMemberTeachers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NGroupMembe__TID__22751F6C" Association="Self.FK__NGroupMembe__TID__22751F6C">
+            <End Role="Teacher" EntitySet="Teacher" />
+            <End Role="NGroupMemberTeacher" EntitySet="NGroupMemberTeacher" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NGroupMembe__TID__3864608B" Association="Self.FK__NGroupMembe__TID__3864608B">
+            <End Role="Teacher" EntitySet="Teacher" />
+            <End Role="NGroupMemberTeachers" EntitySet="NGroupMemberTeachers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NGroupMes__Group__2739D489" Association="Self.FK__NGroupMes__Group__2739D489">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="NGroupMessageTeacher" EntitySet="NGroupMessageTeacher" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NGroupMes__Group__3D2915A8" Association="Self.FK__NGroupMes__Group__3D2915A8">
+            <End Role="NGroups" EntitySet="NGroups" />
+            <End Role="NGroupMessages" EntitySet="NGroupMessages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NGroupMes__Group__42E1EEFE" Association="Self.FK__NGroupMes__Group__42E1EEFE">
+            <End Role="NGroups" EntitySet="NGroups" />
+            <End Role="NGroupMessageTeachers" EntitySet="NGroupMessageTeachers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NGroupMessa__TID__282DF8C2" Association="Self.FK__NGroupMessa__TID__282DF8C2">
+            <End Role="Teacher" EntitySet="Teacher" />
+            <End Role="NGroupMessageTeacher" EntitySet="NGroupMessageTeacher" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NGroupMessa__TID__43D61337" Association="Self.FK__NGroupMessa__TID__43D61337">
+            <End Role="Teacher" EntitySet="Teacher" />
+            <End Role="NGroupMessageTeachers" EntitySet="NGroupMessageTeachers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NGroupMessa__USN__3E1D39E1" Association="Self.FK__NGroupMessa__USN__3E1D39E1">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="NGroupMessages" EntitySet="NGroupMessages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NGroups__classID__1BC821DD" Association="Self.FK__NGroups__classID__1BC821DD">
+            <End Role="Class" EntitySet="Class" />
+            <End Role="NGroups" EntitySet="NGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NGroups__subID__1CBC4616" Association="Self.FK__NGroups__subID__1CBC4616">
+            <End Role="Subject" EntitySet="Subject" />
+            <End Role="NGroups" EntitySet="NGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Notes__ClassID__286302EC" Association="Self.FK__Notes__ClassID__286302EC">
+            <End Role="Class" EntitySet="Class" />
+            <End Role="Notes" EntitySet="Notes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Notes__ModuleID__267ABA7A" Association="Self.FK__Notes__ModuleID__267ABA7A">
+            <End Role="Module" EntitySet="Module" />
+            <End Role="Notes" EntitySet="Notes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Notes__SubID__276EDEB3" Association="Self.FK__Notes__SubID__276EDEB3">
+            <End Role="Subject" EntitySet="Subject" />
+            <End Role="Notes" EntitySet="Notes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Notes__TID__25869641" Association="Self.FK__Notes__TID__25869641">
+            <End Role="Teacher" EntitySet="Teacher" />
+            <End Role="Notes" EntitySet="Notes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Subject_H__Modul__1FCDBCEB" Association="Self.FK__Subject_H__Modul__1FCDBCEB">
+            <End Role="Module" EntitySet="Module" />
+            <End Role="Subject_Has_Module" EntitySet="Subject_Has_Module" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Subject_H__SubID__20C1E124" Association="Self.FK__Subject_H__SubID__20C1E124">
+            <End Role="Subject" EntitySet="Subject" />
+            <End Role="Subject_Has_Module" EntitySet="Subject_Has_Module" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Teacher_T__SubID__0DAF0CB0" Association="Self.FK__Teacher_T__SubID__0DAF0CB0">
+            <End Role="Subject" EntitySet="Subject" />
+            <End Role="Teacher_Teaches_subject" EntitySet="Teacher_Teaches_subject" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Teacher_Tea__TID__0CBAE877" Association="Self.FK__Teacher_Tea__TID__0CBAE877">
+            <End Role="Teacher" EntitySet="Teacher" />
+            <End Role="Teacher_Teaches_subject" EntitySet="Teacher_Teaches_subject" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NMSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Class">
+          <Key>
+            <PropertyRef Name="classID" />
+          </Key>
+          <Property Name="classID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ClassName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Class_Has_Subject" Relationship="Self.FK__Class_Has__Class__164452B1" FromRole="Class" ToRole="Class_Has_Subject" />
+          <NavigationProperty Name="Notes" Relationship="Self.FK__Notes__ClassID__286302EC" FromRole="Class" ToRole="Notes" />
+          <NavigationProperty Name="Groups" Relationship="NMSModel.FK__Groups__classID__2F10007B" FromRole="Class" ToRole="Group" />
+          <NavigationProperty Name="NGroups" Relationship="NMSModel.FK__NGroups__classID__1BC821DD" FromRole="Class" ToRole="NGroup" />
+        </EntityType>
+        <EntityType Name="Class_Has_Subject">
+          <Key>
+            <PropertyRef Name="CSRating" />
+            <PropertyRef Name="ClassID" />
+            <PropertyRef Name="SubID" />
+          </Key>
+          <Property Name="CSRating" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ClassID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SubID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Class" Relationship="Self.FK__Class_Has__Class__164452B1" FromRole="Class_Has_Subject" ToRole="Class" />
+          <NavigationProperty Name="Subject" Relationship="Self.FK__Class_Has__SubID__173876EA" FromRole="Class_Has_Subject" ToRole="Subject" />
+        </EntityType>
+        <EntityType Name="Module">
+          <Key>
+            <PropertyRef Name="ModuleID" />
+          </Key>
+          <Property Name="ModuleID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModuleName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Notes" Relationship="Self.FK__Notes__ModuleID__267ABA7A" FromRole="Module" ToRole="Notes" />
+          <NavigationProperty Name="Subject_Has_Module" Relationship="Self.FK__Subject_H__Modul__1FCDBCEB" FromRole="Module" ToRole="Subject_Has_Module" />
+        </EntityType>
+        <EntityType Name="Note">
+          <Key>
+            <PropertyRef Name="NotesID" />
+          </Key>
+          <Property Name="TID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ModuleID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SubID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ClassID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="NotesID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PDFFile" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Class" Relationship="Self.FK__Notes__ClassID__286302EC" FromRole="Notes" ToRole="Class" />
+          <NavigationProperty Name="Module" Relationship="Self.FK__Notes__ModuleID__267ABA7A" FromRole="Notes" ToRole="Module" />
+          <NavigationProperty Name="Subject" Relationship="Self.FK__Notes__SubID__276EDEB3" FromRole="Notes" ToRole="Subject" />
+          <NavigationProperty Name="Teacher" Relationship="Self.FK__Notes__TID__25869641" FromRole="Notes" ToRole="Teacher" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="USN" />
+          </Key>
+          <Property Name="USN" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="GroupMembers" Relationship="NMSModel.FK__GroupMember__USN__35BCFE0A" FromRole="Student" ToRole="GroupMember" />
+          <NavigationProperty Name="GroupMessages" Relationship="NMSModel.FK__GroupMessag__USN__5EBF139D" FromRole="Student" ToRole="GroupMessage" />
+          <NavigationProperty Name="NGroupMessages" Relationship="NMSModel.FK__NGroupMessa__USN__3E1D39E1" FromRole="Student" ToRole="NGroupMessage" />
+        </EntityType>
+        <EntityType Name="Subject">
+          <Key>
+            <PropertyRef Name="SubID" />
+          </Key>
+          <Property Name="SubID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SubName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Class_Has_Subject" Relationship="Self.FK__Class_Has__SubID__173876EA" FromRole="Subject" ToRole="Class_Has_Subject" />
+          <NavigationProperty Name="Notes" Relationship="Self.FK__Notes__SubID__276EDEB3" FromRole="Subject" ToRole="Notes" />
+          <NavigationProperty Name="Subject_Has_Module" Relationship="Self.FK__Subject_H__SubID__20C1E124" FromRole="Subject" ToRole="Subject_Has_Module" />
+          <NavigationProperty Name="Teacher_Teaches_subject" Relationship="Self.FK__Teacher_T__SubID__0DAF0CB0" FromRole="Subject" ToRole="Teacher_Teaches_subject" />
+          <NavigationProperty Name="Groups" Relationship="NMSModel.FK__Groups__subID__300424B4" FromRole="Subject" ToRole="Group" />
+          <NavigationProperty Name="NGroups" Relationship="NMSModel.FK__NGroups__subID__1CBC4616" FromRole="Subject" ToRole="NGroup" />
+        </EntityType>
+        <EntityType Name="Subject_Has_Module">
+          <Key>
+            <PropertyRef Name="SMRating" />
+            <PropertyRef Name="ModuleID" />
+            <PropertyRef Name="SubID" />
+          </Key>
+          <Property Name="SMRating" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModuleID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SubID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Module" Relationship="Self.FK__Subject_H__Modul__1FCDBCEB" FromRole="Subject_Has_Module" ToRole="Module" />
+          <NavigationProperty Name="Subject" Relationship="Self.FK__Subject_H__SubID__20C1E124" FromRole="Subject_Has_Module" ToRole="Subject" />
+        </EntityType>
+        <EntityType Name="Teacher">
+          <Key>
+            <PropertyRef Name="TID" />
+          </Key>
+          <Property Name="TID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Notes" Relationship="Self.FK__Notes__TID__25869641" FromRole="Teacher" ToRole="Notes" />
+          <NavigationProperty Name="Teacher_Teaches_subject" Relationship="Self.FK__Teacher_Tea__TID__0CBAE877" FromRole="Teacher" ToRole="Teacher_Teaches_subject" />
+          <NavigationProperty Name="GroupMessageTeachers" Relationship="NMSModel.FK__GroupMessag__TID__656C112C" FromRole="Teacher" ToRole="GroupMessageTeacher" />
+          <NavigationProperty Name="GroupMemberTeachers" Relationship="NMSModel.FK__GroupMember__TID__72C60C4A" FromRole="Teacher" ToRole="GroupMemberTeacher" />
+          <NavigationProperty Name="NGroupMemberTeachers" Relationship="NMSModel.FK__NGroupMembe__TID__22751F6C" FromRole="Teacher" ToRole="NGroupMemberTeacher" />
+          <NavigationProperty Name="NGroupMessageTeachers" Relationship="NMSModel.FK__NGroupMessa__TID__282DF8C2" FromRole="Teacher" ToRole="NGroupMessageTeacher" />
+          <NavigationProperty Name="NGroupMemberTeachers1" Relationship="NMSModel.FK__NGroupMembe__TID__3864608B" FromRole="Teacher" ToRole="NGroupMemberTeacher1" />
+          <NavigationProperty Name="NGroupMessageTeachers1" Relationship="NMSModel.FK__NGroupMessa__TID__43D61337" FromRole="Teacher" ToRole="NGroupMessageTeacher1" />
+        </EntityType>
+        <EntityType Name="Teacher_Teaches_subject">
+          <Key>
+            <PropertyRef Name="TSRating" />
+            <PropertyRef Name="TID" />
+            <PropertyRef Name="SubID" />
+          </Key>
+          <Property Name="TSRating" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SubID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Subject" Relationship="Self.FK__Teacher_T__SubID__0DAF0CB0" FromRole="Teacher_Teaches_subject" ToRole="Subject" />
+          <NavigationProperty Name="Teacher" Relationship="Self.FK__Teacher_Tea__TID__0CBAE877" FromRole="Teacher_Teaches_subject" ToRole="Teacher" />
+        </EntityType>
+        <Association Name="FK__Class_Has__Class__164452B1">
+          <End Role="Class" Type="Self.Class" Multiplicity="1" />
+          <End Role="Class_Has_Subject" Type="Self.Class_Has_Subject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="classID" />
+            </Principal>
+            <Dependent Role="Class_Has_Subject">
+              <PropertyRef Name="ClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Notes__ClassID__286302EC">
+          <End Role="Class" Type="Self.Class" Multiplicity="0..1" />
+          <End Role="Notes" Type="Self.Note" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="classID" />
+            </Principal>
+            <Dependent Role="Notes">
+              <PropertyRef Name="ClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Class_Has__SubID__173876EA">
+          <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
+          <End Role="Class_Has_Subject" Type="Self.Class_Has_Subject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="SubID" />
+            </Principal>
+            <Dependent Role="Class_Has_Subject">
+              <PropertyRef Name="SubID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Notes__ModuleID__267ABA7A">
+          <End Role="Module" Type="Self.Module" Multiplicity="0..1" />
+          <End Role="Notes" Type="Self.Note" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Module">
+              <PropertyRef Name="ModuleID" />
+            </Principal>
+            <Dependent Role="Notes">
+              <PropertyRef Name="ModuleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Subject_H__Modul__1FCDBCEB">
+          <End Role="Module" Type="Self.Module" Multiplicity="1" />
+          <End Role="Subject_Has_Module" Type="Self.Subject_Has_Module" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Module">
+              <PropertyRef Name="ModuleID" />
+            </Principal>
+            <Dependent Role="Subject_Has_Module">
+              <PropertyRef Name="ModuleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Notes__SubID__276EDEB3">
+          <End Role="Subject" Type="Self.Subject" Multiplicity="0..1" />
+          <End Role="Notes" Type="Self.Note" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="SubID" />
+            </Principal>
+            <Dependent Role="Notes">
+              <PropertyRef Name="SubID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Notes__TID__25869641">
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="0..1" />
+          <End Role="Notes" Type="Self.Note" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="TID" />
+            </Principal>
+            <Dependent Role="Notes">
+              <PropertyRef Name="TID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Subject_H__SubID__20C1E124">
+          <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
+          <End Role="Subject_Has_Module" Type="Self.Subject_Has_Module" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="SubID" />
+            </Principal>
+            <Dependent Role="Subject_Has_Module">
+              <PropertyRef Name="SubID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Teacher_T__SubID__0DAF0CB0">
+          <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
+          <End Role="Teacher_Teaches_subject" Type="Self.Teacher_Teaches_subject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="SubID" />
+            </Principal>
+            <Dependent Role="Teacher_Teaches_subject">
+              <PropertyRef Name="SubID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Teacher_Tea__TID__0CBAE877">
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="1" />
+          <End Role="Teacher_Teaches_subject" Type="Self.Teacher_Teaches_subject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="TID" />
+            </Principal>
+            <Dependent Role="Teacher_Teaches_subject">
+              <PropertyRef Name="TID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NMSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Classes" EntityType="Self.Class" />
+          <EntitySet Name="Class_Has_Subject" EntityType="Self.Class_Has_Subject" />
+          <EntitySet Name="Modules" EntityType="Self.Module" />
+          <EntitySet Name="Notes" EntityType="Self.Note" />
+          <EntitySet Name="Students" EntityType="Self.Student" />
+          <EntitySet Name="Subjects" EntityType="Self.Subject" />
+          <EntitySet Name="Subject_Has_Module" EntityType="Self.Subject_Has_Module" />
+          <EntitySet Name="Teachers" EntityType="Self.Teacher" />
+          <EntitySet Name="Teacher_Teaches_subject" EntityType="Self.Teacher_Teaches_subject" />
+          <AssociationSet Name="FK__Class_Has__Class__164452B1" Association="Self.FK__Class_Has__Class__164452B1">
+            <End Role="Class" EntitySet="Classes" />
+            <End Role="Class_Has_Subject" EntitySet="Class_Has_Subject" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Notes__ClassID__286302EC" Association="Self.FK__Notes__ClassID__286302EC">
+            <End Role="Class" EntitySet="Classes" />
+            <End Role="Notes" EntitySet="Notes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Class_Has__SubID__173876EA" Association="Self.FK__Class_Has__SubID__173876EA">
+            <End Role="Subject" EntitySet="Subjects" />
+            <End Role="Class_Has_Subject" EntitySet="Class_Has_Subject" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Notes__ModuleID__267ABA7A" Association="Self.FK__Notes__ModuleID__267ABA7A">
+            <End Role="Module" EntitySet="Modules" />
+            <End Role="Notes" EntitySet="Notes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Subject_H__Modul__1FCDBCEB" Association="Self.FK__Subject_H__Modul__1FCDBCEB">
+            <End Role="Module" EntitySet="Modules" />
+            <End Role="Subject_Has_Module" EntitySet="Subject_Has_Module" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Notes__SubID__276EDEB3" Association="Self.FK__Notes__SubID__276EDEB3">
+            <End Role="Subject" EntitySet="Subjects" />
+            <End Role="Notes" EntitySet="Notes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Notes__TID__25869641" Association="Self.FK__Notes__TID__25869641">
+            <End Role="Teacher" EntitySet="Teachers" />
+            <End Role="Notes" EntitySet="Notes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Subject_H__SubID__20C1E124" Association="Self.FK__Subject_H__SubID__20C1E124">
+            <End Role="Subject" EntitySet="Subjects" />
+            <End Role="Subject_Has_Module" EntitySet="Subject_Has_Module" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Teacher_T__SubID__0DAF0CB0" Association="Self.FK__Teacher_T__SubID__0DAF0CB0">
+            <End Role="Subject" EntitySet="Subjects" />
+            <End Role="Teacher_Teaches_subject" EntitySet="Teacher_Teaches_subject" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Teacher_Tea__TID__0CBAE877" Association="Self.FK__Teacher_Tea__TID__0CBAE877">
+            <End Role="Teacher" EntitySet="Teachers" />
+            <End Role="Teacher_Teaches_subject" EntitySet="Teacher_Teaches_subject" />
+          </AssociationSet>
+          <FunctionImport Name="AddNotes">
+            <Parameter Name="TID" Mode="In" Type="String" />
+            <Parameter Name="ModuleID" Mode="In" Type="String" />
+            <Parameter Name="SubID" Mode="In" Type="String" />
+            <Parameter Name="ClassID" Mode="In" Type="String" />
+            <Parameter Name="PDFFile" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllFilesByOrder" ReturnType="Collection(NMSModel.GetAllFilesByOrder_Result)">
+          <Parameter Name="tid" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllPDFFilesByOrder">
+          <Parameter Name="tid" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllPDFSFilesByOrder">
+          <Parameter Name="tid" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllTHEPDFFilesByOrder" EntitySet="Notes" ReturnType="Collection(NMSModel.Note)">
+          <Parameter Name="tid" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="GroupMembers" EntityType="NMSModel.GroupMember" />
+          <EntitySet Name="GroupMessages" EntityType="NMSModel.GroupMessage" />
+          <EntitySet Name="GroupMessageTeachers" EntityType="NMSModel.GroupMessageTeacher" />
+          <EntitySet Name="Groups" EntityType="NMSModel.Group" />
+          <AssociationSet Name="FK__Groups__classID__2F10007B" Association="NMSModel.FK__Groups__classID__2F10007B">
+            <End Role="Class" EntitySet="Classes" />
+            <End Role="Group" EntitySet="Groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GroupMemb__Group__34C8D9D1" Association="NMSModel.FK__GroupMemb__Group__34C8D9D1">
+            <End Role="Group" EntitySet="Groups" />
+            <End Role="GroupMember" EntitySet="GroupMembers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GroupMember__USN__35BCFE0A" Association="NMSModel.FK__GroupMember__USN__35BCFE0A">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="GroupMember" EntitySet="GroupMembers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GroupMess__Group__5DCAEF64" Association="NMSModel.FK__GroupMess__Group__5DCAEF64">
+            <End Role="Group" EntitySet="Groups" />
+            <End Role="GroupMessage" EntitySet="GroupMessages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GroupMessag__USN__5EBF139D" Association="NMSModel.FK__GroupMessag__USN__5EBF139D">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="GroupMessage" EntitySet="GroupMessages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GroupMess__Group__6477ECF3" Association="NMSModel.FK__GroupMess__Group__6477ECF3">
+            <End Role="Group" EntitySet="Groups" />
+            <End Role="GroupMessageTeacher" EntitySet="GroupMessageTeachers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GroupMessag__TID__656C112C" Association="NMSModel.FK__GroupMessag__TID__656C112C">
+            <End Role="Teacher" EntitySet="Teachers" />
+            <End Role="GroupMessageTeacher" EntitySet="GroupMessageTeachers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Groups__subID__300424B4" Association="NMSModel.FK__Groups__subID__300424B4">
+            <End Role="Subject" EntitySet="Subjects" />
+            <End Role="Group" EntitySet="Groups" />
+          </AssociationSet>
+          <FunctionImport Name="AddGroupMemberTeacher">
+            <Parameter Name="GroupID" Mode="In" Type="String" />
+            <Parameter Name="TID" Mode="In" Type="String" />
+            <Parameter Name="username" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="CreateGroup">
+            <Parameter Name="GroupID" Mode="In" Type="String" />
+            <Parameter Name="GroupName" Mode="In" Type="String" />
+            <Parameter Name="GroupIcon" Mode="In" Type="Binary" />
+            <Parameter Name="classID" Mode="In" Type="String" />
+            <Parameter Name="subID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="CreateGroups" EntitySet="Groups" ReturnType="Collection(NMSModel.Group)">
+            <Parameter Name="GroupID" Mode="In" Type="String" />
+            <Parameter Name="GroupName" Mode="In" Type="String" />
+            <Parameter Name="GroupIcon" Mode="In" Type="Binary" />
+            <Parameter Name="classID" Mode="In" Type="String" />
+            <Parameter Name="subID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="AddGroupMemberTeachers">
+            <Parameter Name="GroupID" Mode="In" Type="String" />
+            <Parameter Name="TID" Mode="In" Type="String" />
+            <Parameter Name="username" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="GroupMemberTeachers" EntityType="NMSModel.GroupMemberTeacher" />
+          <AssociationSet Name="FK__GroupMemb__Group__71D1E811" Association="NMSModel.FK__GroupMemb__Group__71D1E811">
+            <End Role="Group" EntitySet="Groups" />
+            <End Role="GroupMemberTeacher" EntitySet="GroupMemberTeachers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GroupMember__TID__72C60C4A" Association="NMSModel.FK__GroupMember__TID__72C60C4A">
+            <End Role="Teacher" EntitySet="Teachers" />
+            <End Role="GroupMemberTeacher" EntitySet="GroupMemberTeachers" />
+          </AssociationSet>
+          <FunctionImport Name="AddGroupMemberTeacherss">
+            <Parameter Name="GroupID" Mode="In" Type="String" />
+            <Parameter Name="TID" Mode="In" Type="String" />
+            <Parameter Name="username" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="AddGroupMemberTeachersss" EntitySet="GroupMemberTeachers" ReturnType="Collection(NMSModel.GroupMemberTeacher)">
+            <Parameter Name="GroupID" Mode="In" Type="String" />
+            <Parameter Name="TID" Mode="In" Type="String" />
+            <Parameter Name="username" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ShowGroupMessageTeacher" ReturnType="Collection(NMSModel.ShowGroupMessageTeacher_Result)">
+          <Parameter Name="GroupID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ShowGroupMessageTeachers" EntitySet="GroupMessageTeachers" ReturnType="Collection(NMSModel.GroupMessageTeacher)">
+          <Parameter Name="GroupID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="CreateGroupMessageTeacher" ReturnType="Collection(NMSModel.CreateGroupMessageTeacher_Result)">
+          <Parameter Name="groupid" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="CreateGroupMessageTeachers" EntitySet="GroupMessageTeachers" ReturnType="Collection(NMSModel.GroupMessageTeacher)">
+          <Parameter Name="groupid" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ProjectGroupMessageTeacher" ReturnType="Collection(NMSModel.ProjectGroupMessageTeacher_Result)">
+          <Parameter Name="groupid" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ProjectGroupMessageTeachers" EntitySet="GroupMessageTeachers" ReturnType="Collection(NMSModel.GroupMessageTeacher)">
+          <Parameter Name="groupid" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="NGroupMemberTeachers" EntityType="NMSModel.NGroupMemberTeacher" />
+          <EntitySet Name="NGroupMessageTeachers" EntityType="NMSModel.NGroupMessageTeacher" />
+          <EntitySet Name="NGroups" EntityType="NMSModel.NGroup" />
+          <AssociationSet Name="FK__NGroups__classID__1BC821DD" Association="NMSModel.FK__NGroups__classID__1BC821DD">
+            <End Role="Class" EntitySet="Classes" />
+            <End Role="NGroup" EntitySet="NGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NGroupMem__Group__2180FB33" Association="NMSModel.FK__NGroupMem__Group__2180FB33">
+            <End Role="Group" EntitySet="Groups" />
+            <End Role="NGroupMemberTeacher" EntitySet="NGroupMemberTeachers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NGroupMes__Group__2739D489" Association="NMSModel.FK__NGroupMes__Group__2739D489">
+            <End Role="Group" EntitySet="Groups" />
+            <End Role="NGroupMessageTeacher" EntitySet="NGroupMessageTeachers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NGroupMembe__TID__22751F6C" Association="NMSModel.FK__NGroupMembe__TID__22751F6C">
+            <End Role="Teacher" EntitySet="Teachers" />
+            <End Role="NGroupMemberTeacher" EntitySet="NGroupMemberTeachers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NGroupMessa__TID__282DF8C2" Association="NMSModel.FK__NGroupMessa__TID__282DF8C2">
+            <End Role="Teacher" EntitySet="Teachers" />
+            <End Role="NGroupMessageTeacher" EntitySet="NGroupMessageTeachers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NGroups__subID__1CBC4616" Association="NMSModel.FK__NGroups__subID__1CBC4616">
+            <End Role="Subject" EntitySet="Subjects" />
+            <End Role="NGroup" EntitySet="NGroups" />
+          </AssociationSet>
+          <FunctionImport Name="NAddGroupMemberTeachers">
+            <Parameter Name="GroupID" Mode="In" Type="String" />
+            <Parameter Name="TID" Mode="In" Type="String" />
+            <Parameter Name="username" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="NCreateGroup">
+            <Parameter Name="GroupName" Mode="In" Type="String" />
+            <Parameter Name="GroupIcon" Mode="In" Type="Binary" />
+            <Parameter Name="classID" Mode="In" Type="String" />
+            <Parameter Name="subID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="NCreateGroups" EntitySet="NGroups" ReturnType="Collection(NMSModel.NGroup)">
+            <Parameter Name="GroupName" Mode="In" Type="String" />
+            <Parameter Name="GroupIcon" Mode="In" Type="Binary" />
+            <Parameter Name="classID" Mode="In" Type="String" />
+            <Parameter Name="subID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="NAddGroupMemberTeacherss" EntitySet="NGroupMemberTeachers" ReturnType="Collection(NMSModel.NGroupMemberTeacher)">
+            <Parameter Name="GroupID" Mode="In" Type="String" />
+            <Parameter Name="TID" Mode="In" Type="String" />
+            <Parameter Name="username" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="NGetGroupID" ReturnType="Collection(Int32)">
+          <Parameter Name="GroupName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="NGetGroupIDs" EntitySet="NGroups" ReturnType="Collection(NMSModel.NGroup)">
+          <Parameter Name="GroupName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="NGetGroupIDss" ReturnType="Collection(Int32)">
+          <Parameter Name="GroupName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="NInsertGroupMemberTeacher">
+            <Parameter Name="GroupID" Mode="In" Type="Int32" />
+            <Parameter Name="TID" Mode="In" Type="String" />
+            <Parameter Name="username" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="NInsertGroupMemberTeachers" EntitySet="NGroupMemberTeachers" ReturnType="Collection(NMSModel.NGroupMemberTeacher)">
+            <Parameter Name="GroupID" Mode="In" Type="Int32" />
+            <Parameter Name="TID" Mode="In" Type="String" />
+            <Parameter Name="username" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="NMakeGroups">
+            <Parameter Name="GroupName" Mode="In" Type="String" />
+            <Parameter Name="GroupIcon" Mode="In" Type="Binary" />
+            <Parameter Name="classID" Mode="In" Type="String" />
+            <Parameter Name="subID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="NMakeGroupss" EntitySet="NGroups" ReturnType="Collection(NMSModel.NGroup)">
+            <Parameter Name="GroupName" Mode="In" Type="String" />
+            <Parameter Name="GroupIcon" Mode="In" Type="Binary" />
+            <Parameter Name="classID" Mode="In" Type="String" />
+            <Parameter Name="subID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="NGetGroupIDs1" ReturnType="Collection(NMSModel.NGetGroupIDs1_Result)">
+          <Parameter Name="GroupName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="NGetGroupIDsss" EntitySet="Groups" ReturnType="Collection(NMSModel.Group)">
+          <Parameter Name="GroupName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="NInsertGroupMemberTeachers1">
+            <Parameter Name="GroupID" Mode="In" Type="Int32" />
+            <Parameter Name="TID" Mode="In" Type="String" />
+            <Parameter Name="username" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="NInsertGroupMemberTeacherss" EntitySet="NGroupMemberTeachers" ReturnType="Collection(NMSModel.NGroupMemberTeacher)">
+            <Parameter Name="GroupID" Mode="In" Type="Int32" />
+            <Parameter Name="TID" Mode="In" Type="String" />
+            <Parameter Name="username" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="NInsertGroupMemberTeacher2" EntitySet="NGroupMemberTeachers" ReturnType="Collection(NMSModel.NGroupMemberTeacher)">
+            <Parameter Name="GroupID" Mode="In" Type="Int32" />
+            <Parameter Name="TID" Mode="In" Type="String" />
+            <Parameter Name="username" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="NGroupMemberTeachers1" EntityType="NMSModel.NGroupMemberTeacher1" />
+          <EntitySet Name="NGroupMessages" EntityType="NMSModel.NGroupMessage" />
+          <EntitySet Name="NGroupMessageTeachers1" EntityType="NMSModel.NGroupMessageTeacher1" />
+          <AssociationSet Name="FK__NGroupMem__Group__37703C52" Association="NMSModel.FK__NGroupMem__Group__37703C52">
+            <End Role="NGroup" EntitySet="NGroups" />
+            <End Role="NGroupMemberTeacher1" EntitySet="NGroupMemberTeachers1" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NGroupMembe__TID__3864608B" Association="NMSModel.FK__NGroupMembe__TID__3864608B">
+            <End Role="Teacher" EntitySet="Teachers" />
+            <End Role="NGroupMemberTeacher1" EntitySet="NGroupMemberTeachers1" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NGroupMes__Group__3D2915A8" Association="NMSModel.FK__NGroupMes__Group__3D2915A8">
+            <End Role="NGroup" EntitySet="NGroups" />
+            <End Role="NGroupMessage" EntitySet="NGroupMessages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NGroupMessa__USN__3E1D39E1" Association="NMSModel.FK__NGroupMessa__USN__3E1D39E1">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="NGroupMessage" EntitySet="NGroupMessages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NGroupMes__Group__42E1EEFE" Association="NMSModel.FK__NGroupMes__Group__42E1EEFE">
+            <End Role="NGroup" EntitySet="NGroups" />
+            <End Role="NGroupMessageTeacher1" EntitySet="NGroupMessageTeachers1" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NGroupMessa__TID__43D61337" Association="NMSModel.FK__NGroupMessa__TID__43D61337">
+            <End Role="Teacher" EntitySet="Teachers" />
+            <End Role="NGroupMessageTeacher1" EntitySet="NGroupMessageTeachers1" />
+          </AssociationSet>
+          <FunctionImport Name="NNInsertGroupMemberTeachers">
+            <Parameter Name="GroupID" Mode="In" Type="Int32" />
+            <Parameter Name="TID" Mode="In" Type="String" />
+            <Parameter Name="username" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="NNNInsertGroupMemberTeachers" EntitySet="NGroupMemberTeachers1" ReturnType="Collection(NMSModel.NGroupMemberTeacher1)">
+            <Parameter Name="GroupID" Mode="In" Type="Int32" />
+            <Parameter Name="TID" Mode="In" Type="String" />
+            <Parameter Name="username" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="NEInsertGroupMemberTeachers">
+            <Parameter Name="GroupID" Mode="In" Type="Int32" />
+            <Parameter Name="TID" Mode="In" Type="String" />
+            <Parameter Name="username" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="NEWInsertGroupMemberTeachers" EntitySet="NGroupMemberTeachers1" ReturnType="Collection(NMSModel.NGroupMemberTeacher1)">
+            <Parameter Name="GroupID" Mode="In" Type="Int32" />
+            <Parameter Name="TID" Mode="In" Type="String" />
+            <Parameter Name="username" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="NGetAllGroup" ReturnType="Collection(NMSModel.NGetAllGroup_Result)" />
+          <FunctionImport Name="NGetAllGroups" EntitySet="NGroups" ReturnType="Collection(NMSModel.NGroup)" />
+          <FunctionImport Name="GetAllGroupMessage" ReturnType="Collection(NMSModel.GetAllGroupMessage_Result)">
+          <Parameter Name="GroupID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="NGetAllGroupMessage" EntitySet="NGroupMessageTeachers1" ReturnType="Collection(NMSModel.NGroupMessageTeacher1)">
+          <Parameter Name="GroupID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetGroupChat" ReturnType="Collection(NMSModel.GetGroupChat_Result)">
+          <Parameter Name="tid" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="NGetGroupChat" EntitySet="NGroups" ReturnType="Collection(NMSModel.NGroup)">
+          <Parameter Name="tid" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetTeachersNotes" ReturnType="Collection(NMSModel.GetTeachersNotes_Result)" />
+          <FunctionImport Name="GetTeachersPdfNotes" EntitySet="Notes" ReturnType="Collection(NMSModel.Note)" />
+          <FunctionImport Name="InsertMessageIntoGroup">
+            <Parameter Name="GroupID" Mode="In" Type="Int32" />
+            <Parameter Name="TID" Mode="In" Type="String" />
+            <Parameter Name="message" Mode="In" Type="String" />
+            <Parameter Name="Time" Mode="In" Type="Time" />
+            <Parameter Name="Media" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="NInsertMessageIntoGroup" EntitySet="NGroupMessageTeachers1" ReturnType="Collection(NMSModel.NGroupMessageTeacher1)">
+            <Parameter Name="GroupID" Mode="In" Type="Int32" />
+            <Parameter Name="TID" Mode="In" Type="String" />
+            <Parameter Name="message" Mode="In" Type="String" />
+            <Parameter Name="Time" Mode="In" Type="Time" />
+            <Parameter Name="Media" Mode="In" Type="Binary" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="GetAllFilesByOrder_Result">
+          <Property Type="String" Name="TID" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="ModuleID" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="SubID" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="ClassID" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="NotesID" Nullable="false" />
+          <Property Type="Binary" Name="PDFFile" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="GroupMember">
+          <Key>
+            <PropertyRef Name="GroupID" />
+            <PropertyRef Name="USN" />
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="GroupID" Type="Int32" Nullable="false" />
+          <Property Name="USN" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="username" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Group" Relationship="NMSModel.FK__GroupMemb__Group__34C8D9D1" FromRole="GroupMember" ToRole="Group" />
+          <NavigationProperty Name="Student" Relationship="NMSModel.FK__GroupMember__USN__35BCFE0A" FromRole="GroupMember" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="GroupMessage">
+          <Key>
+            <PropertyRef Name="GroupID" />
+            <PropertyRef Name="USN" />
+            <PropertyRef Name="message" />
+            <PropertyRef Name="Time" />
+          </Key>
+          <Property Name="GroupID" Type="Int32" Nullable="false" />
+          <Property Name="USN" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="message" Type="String" Nullable="false" MaxLength="750" FixedLength="false" Unicode="false" />
+          <Property Name="Time" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Media" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Group" Relationship="NMSModel.FK__GroupMess__Group__5DCAEF64" FromRole="GroupMessage" ToRole="Group" />
+          <NavigationProperty Name="Student" Relationship="NMSModel.FK__GroupMessag__USN__5EBF139D" FromRole="GroupMessage" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="GroupMessageTeacher">
+          <Key>
+            <PropertyRef Name="GroupID" />
+            <PropertyRef Name="TID" />
+            <PropertyRef Name="message" />
+            <PropertyRef Name="Time" />
+          </Key>
+          <Property Name="GroupID" Type="Int32" Nullable="false" />
+          <Property Name="TID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="message" Type="String" Nullable="false" MaxLength="750" FixedLength="false" Unicode="false" />
+          <Property Name="Time" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Media" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Group" Relationship="NMSModel.FK__GroupMess__Group__6477ECF3" FromRole="GroupMessageTeacher" ToRole="Group" />
+          <NavigationProperty Name="Teacher" Relationship="NMSModel.FK__GroupMessag__TID__656C112C" FromRole="GroupMessageTeacher" ToRole="Teacher" />
+        </EntityType>
+        <EntityType Name="Group">
+          <Key>
+            <PropertyRef Name="GroupID" />
+          </Key>
+          <Property Name="GroupID" Type="Int32" Nullable="false" />
+          <Property Name="GroupName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="GroupIcon" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="classID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="subID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Class" Relationship="NMSModel.FK__Groups__classID__2F10007B" FromRole="Group" ToRole="Class" />
+          <NavigationProperty Name="GroupMembers" Relationship="NMSModel.FK__GroupMemb__Group__34C8D9D1" FromRole="Group" ToRole="GroupMember" />
+          <NavigationProperty Name="GroupMessages" Relationship="NMSModel.FK__GroupMess__Group__5DCAEF64" FromRole="Group" ToRole="GroupMessage" />
+          <NavigationProperty Name="GroupMessageTeachers" Relationship="NMSModel.FK__GroupMess__Group__6477ECF3" FromRole="Group" ToRole="GroupMessageTeacher" />
+          <NavigationProperty Name="Subject" Relationship="NMSModel.FK__Groups__subID__300424B4" FromRole="Group" ToRole="Subject" />
+          <NavigationProperty Name="GroupMemberTeachers" Relationship="NMSModel.FK__GroupMemb__Group__71D1E811" FromRole="Group" ToRole="GroupMemberTeacher" />
+          <NavigationProperty Name="NGroupMemberTeachers" Relationship="NMSModel.FK__NGroupMem__Group__2180FB33" FromRole="Group" ToRole="NGroupMemberTeacher" />
+          <NavigationProperty Name="NGroupMessageTeachers" Relationship="NMSModel.FK__NGroupMes__Group__2739D489" FromRole="Group" ToRole="NGroupMessageTeacher" />
+        </EntityType>
+        <Association Name="FK__Groups__classID__2F10007B">
+          <End Type="NMSModel.Class" Role="Class" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="NMSModel.Group" Role="Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="classID" />
+            </Principal>
+            <Dependent Role="Group">
+              <PropertyRef Name="classID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GroupMemb__Group__34C8D9D1">
+          <End Type="NMSModel.Group" Role="Group" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="NMSModel.GroupMember" Role="GroupMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="GroupID" />
+            </Principal>
+            <Dependent Role="GroupMember">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GroupMember__USN__35BCFE0A">
+          <End Type="NMSModel.Student" Role="Student" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="NMSModel.GroupMember" Role="GroupMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="USN" />
+            </Principal>
+            <Dependent Role="GroupMember">
+              <PropertyRef Name="USN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GroupMess__Group__5DCAEF64">
+          <End Type="NMSModel.Group" Role="Group" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="NMSModel.GroupMessage" Role="GroupMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="GroupID" />
+            </Principal>
+            <Dependent Role="GroupMessage">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GroupMessag__USN__5EBF139D">
+          <End Type="NMSModel.Student" Role="Student" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="NMSModel.GroupMessage" Role="GroupMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="USN" />
+            </Principal>
+            <Dependent Role="GroupMessage">
+              <PropertyRef Name="USN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GroupMess__Group__6477ECF3">
+          <End Type="NMSModel.Group" Role="Group" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="NMSModel.GroupMessageTeacher" Role="GroupMessageTeacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="GroupID" />
+            </Principal>
+            <Dependent Role="GroupMessageTeacher">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GroupMessag__TID__656C112C">
+          <End Type="NMSModel.Teacher" Role="Teacher" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="NMSModel.GroupMessageTeacher" Role="GroupMessageTeacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="TID" />
+            </Principal>
+            <Dependent Role="GroupMessageTeacher">
+              <PropertyRef Name="TID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Groups__subID__300424B4">
+          <End Type="NMSModel.Subject" Role="Subject" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="NMSModel.Group" Role="Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="SubID" />
+            </Principal>
+            <Dependent Role="Group">
+              <PropertyRef Name="subID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="GroupMemberTeacher">
+          <Key>
+            <PropertyRef Name="GroupID" />
+            <PropertyRef Name="TID" />
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="GroupID" Type="Int32" Nullable="false" />
+          <Property Name="TID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="username" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Group" Relationship="NMSModel.FK__GroupMemb__Group__71D1E811" FromRole="GroupMemberTeacher" ToRole="Group" />
+          <NavigationProperty Name="Teacher" Relationship="NMSModel.FK__GroupMember__TID__72C60C4A" FromRole="GroupMemberTeacher" ToRole="Teacher" />
+        </EntityType>
+        <Association Name="FK__GroupMemb__Group__71D1E811">
+          <End Type="NMSModel.Group" Role="Group" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="NMSModel.GroupMemberTeacher" Role="GroupMemberTeacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="GroupID" />
+            </Principal>
+            <Dependent Role="GroupMemberTeacher">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GroupMember__TID__72C60C4A">
+          <End Type="NMSModel.Teacher" Role="Teacher" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="NMSModel.GroupMemberTeacher" Role="GroupMemberTeacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="TID" />
+            </Principal>
+            <Dependent Role="GroupMemberTeacher">
+              <PropertyRef Name="TID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="ShowGroupMessageTeacher_Result">
+          <Property Type="String" Name="TID" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="message" Nullable="false" MaxLength="750" />
+          <Property Type="DateTime" Name="Time" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="CreateGroupMessageTeacher_Result">
+          <Property Type="String" Name="TID" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="message" Nullable="false" MaxLength="750" />
+          <Property Type="Time" Name="Time" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="ProjectGroupMessageTeacher_Result">
+          <Property Type="String" Name="GroupID" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="TID" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="message" Nullable="false" MaxLength="750" />
+          <Property Type="Time" Name="Time" Nullable="false" />
+          <Property Type="Binary" Name="Media" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="NGroupMemberTeacher">
+          <Key>
+            <PropertyRef Name="GroupID" />
+            <PropertyRef Name="TID" />
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="GroupID" Type="Int32" Nullable="false" />
+          <Property Name="TID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="username" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Group" Relationship="NMSModel.FK__NGroupMem__Group__2180FB33" FromRole="NGroupMemberTeacher" ToRole="Group" />
+          <NavigationProperty Name="Teacher" Relationship="NMSModel.FK__NGroupMembe__TID__22751F6C" FromRole="NGroupMemberTeacher" ToRole="Teacher" />
+        </EntityType>
+        <EntityType Name="NGroupMessageTeacher">
+          <Key>
+            <PropertyRef Name="GroupID" />
+            <PropertyRef Name="TID" />
+            <PropertyRef Name="Time" />
+          </Key>
+          <Property Name="GroupID" Type="Int32" Nullable="false" />
+          <Property Name="TID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="message" Type="String" MaxLength="750" FixedLength="false" Unicode="false" />
+          <Property Name="Time" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Media" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Group" Relationship="NMSModel.FK__NGroupMes__Group__2739D489" FromRole="NGroupMessageTeacher" ToRole="Group" />
+          <NavigationProperty Name="Teacher" Relationship="NMSModel.FK__NGroupMessa__TID__282DF8C2" FromRole="NGroupMessageTeacher" ToRole="Teacher" />
+        </EntityType>
+        <EntityType Name="NGroup">
+          <Key>
+            <PropertyRef Name="GroupID" />
+          </Key>
+          <Property Name="GroupID" Type="Int32" Nullable="false" />
+          <Property Name="GroupName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="GroupIcon" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="classID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="subID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Class" Relationship="NMSModel.FK__NGroups__classID__1BC821DD" FromRole="NGroup" ToRole="Class" />
+          <NavigationProperty Name="Subject" Relationship="NMSModel.FK__NGroups__subID__1CBC4616" FromRole="NGroup" ToRole="Subject" />
+          <NavigationProperty Name="NGroupMemberTeachers" Relationship="NMSModel.FK__NGroupMem__Group__37703C52" FromRole="NGroup" ToRole="NGroupMemberTeacher1" />
+          <NavigationProperty Name="NGroupMessages" Relationship="NMSModel.FK__NGroupMes__Group__3D2915A8" FromRole="NGroup" ToRole="NGroupMessage" />
+          <NavigationProperty Name="NGroupMessageTeachers" Relationship="NMSModel.FK__NGroupMes__Group__42E1EEFE" FromRole="NGroup" ToRole="NGroupMessageTeacher1" />
+        </EntityType>
+        <Association Name="FK__NGroups__classID__1BC821DD">
+          <End Type="NMSModel.Class" Role="Class" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="NMSModel.NGroup" Role="NGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="classID" />
+            </Principal>
+            <Dependent Role="NGroup">
+              <PropertyRef Name="classID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NGroupMem__Group__2180FB33">
+          <End Type="NMSModel.Group" Role="Group" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="NMSModel.NGroupMemberTeacher" Role="NGroupMemberTeacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="GroupID" />
+            </Principal>
+            <Dependent Role="NGroupMemberTeacher">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NGroupMes__Group__2739D489">
+          <End Type="NMSModel.Group" Role="Group" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="NMSModel.NGroupMessageTeacher" Role="NGroupMessageTeacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="GroupID" />
+            </Principal>
+            <Dependent Role="NGroupMessageTeacher">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NGroupMembe__TID__22751F6C">
+          <End Type="NMSModel.Teacher" Role="Teacher" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="NMSModel.NGroupMemberTeacher" Role="NGroupMemberTeacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="TID" />
+            </Principal>
+            <Dependent Role="NGroupMemberTeacher">
+              <PropertyRef Name="TID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NGroupMessa__TID__282DF8C2">
+          <End Type="NMSModel.Teacher" Role="Teacher" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="NMSModel.NGroupMessageTeacher" Role="NGroupMessageTeacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="TID" />
+            </Principal>
+            <Dependent Role="NGroupMessageTeacher">
+              <PropertyRef Name="TID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NGroups__subID__1CBC4616">
+          <End Type="NMSModel.Subject" Role="Subject" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="NMSModel.NGroup" Role="NGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="SubID" />
+            </Principal>
+            <Dependent Role="NGroup">
+              <PropertyRef Name="subID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="NGetGroupIDs1_Result">
+          <Property Type="Int32" Name="GroupID" Nullable="false" />
+          <Property Type="String" Name="GroupName" Nullable="true" MaxLength="100" />
+          <Property Type="Binary" Name="GroupIcon" Nullable="true" />
+          <Property Type="String" Name="classID" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="subID" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <EntityType Name="NGroupMemberTeacher1">
+          <Key>
+            <PropertyRef Name="GroupID" />
+            <PropertyRef Name="TID" />
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="GroupID" Type="Int32" Nullable="false" />
+          <Property Name="TID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="username" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="NGroup" Relationship="NMSModel.FK__NGroupMem__Group__37703C52" FromRole="NGroupMemberTeacher1" ToRole="NGroup" />
+          <NavigationProperty Name="Teacher" Relationship="NMSModel.FK__NGroupMembe__TID__3864608B" FromRole="NGroupMemberTeacher1" ToRole="Teacher" />
+        </EntityType>
+        <EntityType Name="NGroupMessage">
+          <Key>
+            <PropertyRef Name="GroupID" />
+            <PropertyRef Name="USN" />
+            <PropertyRef Name="Time" />
+          </Key>
+          <Property Name="GroupID" Type="Int32" Nullable="false" />
+          <Property Name="USN" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="message" Type="String" MaxLength="750" FixedLength="false" Unicode="false" />
+          <Property Name="Time" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Media" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="NGroup" Relationship="NMSModel.FK__NGroupMes__Group__3D2915A8" FromRole="NGroupMessage" ToRole="NGroup" />
+          <NavigationProperty Name="Student" Relationship="NMSModel.FK__NGroupMessa__USN__3E1D39E1" FromRole="NGroupMessage" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="NGroupMessageTeacher1">
+          <Key>
+            <PropertyRef Name="GroupID" />
+            <PropertyRef Name="TID" />
+            <PropertyRef Name="Time" />
+          </Key>
+          <Property Name="GroupID" Type="Int32" Nullable="false" />
+          <Property Name="TID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="message" Type="String" MaxLength="750" FixedLength="false" Unicode="false" />
+          <Property Name="Time" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Media" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="NGroup" Relationship="NMSModel.FK__NGroupMes__Group__42E1EEFE" FromRole="NGroupMessageTeacher1" ToRole="NGroup" />
+          <NavigationProperty Name="Teacher" Relationship="NMSModel.FK__NGroupMessa__TID__43D61337" FromRole="NGroupMessageTeacher1" ToRole="Teacher" />
+        </EntityType>
+        <Association Name="FK__NGroupMem__Group__37703C52">
+          <End Type="NMSModel.NGroup" Role="NGroup" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="NMSModel.NGroupMemberTeacher1" Role="NGroupMemberTeacher1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NGroup">
+              <PropertyRef Name="GroupID" />
+            </Principal>
+            <Dependent Role="NGroupMemberTeacher1">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NGroupMembe__TID__3864608B">
+          <End Type="NMSModel.Teacher" Role="Teacher" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="NMSModel.NGroupMemberTeacher1" Role="NGroupMemberTeacher1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="TID" />
+            </Principal>
+            <Dependent Role="NGroupMemberTeacher1">
+              <PropertyRef Name="TID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NGroupMes__Group__3D2915A8">
+          <End Type="NMSModel.NGroup" Role="NGroup" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="NMSModel.NGroupMessage" Role="NGroupMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NGroup">
+              <PropertyRef Name="GroupID" />
+            </Principal>
+            <Dependent Role="NGroupMessage">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NGroupMessa__USN__3E1D39E1">
+          <End Type="NMSModel.Student" Role="Student" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="NMSModel.NGroupMessage" Role="NGroupMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="USN" />
+            </Principal>
+            <Dependent Role="NGroupMessage">
+              <PropertyRef Name="USN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NGroupMes__Group__42E1EEFE">
+          <End Type="NMSModel.NGroup" Role="NGroup" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="NMSModel.NGroupMessageTeacher1" Role="NGroupMessageTeacher1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NGroup">
+              <PropertyRef Name="GroupID" />
+            </Principal>
+            <Dependent Role="NGroupMessageTeacher1">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NGroupMessa__TID__43D61337">
+          <End Type="NMSModel.Teacher" Role="Teacher" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="NMSModel.NGroupMessageTeacher1" Role="NGroupMessageTeacher1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="TID" />
+            </Principal>
+            <Dependent Role="NGroupMessageTeacher1">
+              <PropertyRef Name="TID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="NGetAllGroup_Result">
+          <Property Type="Int32" Name="GroupID" Nullable="false" />
+          <Property Type="String" Name="GroupName" Nullable="true" MaxLength="100" />
+          <Property Type="Binary" Name="GroupIcon" Nullable="true" />
+          <Property Type="String" Name="classID" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="subID" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="GetAllGroupMessage_Result">
+          <Property Type="Int32" Name="GroupID" Nullable="false" />
+          <Property Type="String" Name="TID" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="message" Nullable="true" MaxLength="750" />
+          <Property Type="Time" Name="Time" Nullable="false" />
+          <Property Type="Binary" Name="Media" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetGroupChat_Result">
+          <Property Type="Int32" Name="GroupID" Nullable="false" />
+          <Property Type="String" Name="GroupName" Nullable="true" MaxLength="100" />
+          <Property Type="Binary" Name="GroupIcon" Nullable="true" />
+          <Property Type="String" Name="classID" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="subID" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="GroupID1" Nullable="false" />
+          <Property Type="String" Name="TID" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="username" Nullable="false" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="GetTeachersNotes_Result">
+          <Property Type="String" Name="TID" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="ModuleID" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="SubID" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="ClassID" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="NotesID" Nullable="false" />
+          <Property Type="Binary" Name="PDFFile" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NMSModelStoreContainer" CdmEntityContainer="NMSEntities">
+          <EntitySetMapping Name="Classes">
+            <EntityTypeMapping TypeName="NMSModel.Class">
+              <MappingFragment StoreEntitySet="Class">
+                <ScalarProperty Name="classID" ColumnName="classID" />
+                <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Class_Has_Subject">
+            <EntityTypeMapping TypeName="NMSModel.Class_Has_Subject">
+              <MappingFragment StoreEntitySet="Class_Has_Subject">
+                <ScalarProperty Name="CSRating" ColumnName="CSRating" />
+                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+                <ScalarProperty Name="SubID" ColumnName="SubID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Modules">
+            <EntityTypeMapping TypeName="NMSModel.Module">
+              <MappingFragment StoreEntitySet="Module">
+                <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+                <ScalarProperty Name="ModuleName" ColumnName="ModuleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Notes">
+            <EntityTypeMapping TypeName="NMSModel.Note">
+              <MappingFragment StoreEntitySet="Notes">
+                <ScalarProperty Name="TID" ColumnName="TID" />
+                <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+                <ScalarProperty Name="SubID" ColumnName="SubID" />
+                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+                <ScalarProperty Name="NotesID" ColumnName="NotesID" />
+                <ScalarProperty Name="PDFFile" ColumnName="PDFFile" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="NMSModel.Student">
+              <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="USN" ColumnName="USN" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subjects">
+            <EntityTypeMapping TypeName="NMSModel.Subject">
+              <MappingFragment StoreEntitySet="Subject">
+                <ScalarProperty Name="SubID" ColumnName="SubID" />
+                <ScalarProperty Name="SubName" ColumnName="SubName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subject_Has_Module">
+            <EntityTypeMapping TypeName="NMSModel.Subject_Has_Module">
+              <MappingFragment StoreEntitySet="Subject_Has_Module">
+                <ScalarProperty Name="SMRating" ColumnName="SMRating" />
+                <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+                <ScalarProperty Name="SubID" ColumnName="SubID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teachers">
+            <EntityTypeMapping TypeName="NMSModel.Teacher">
+              <MappingFragment StoreEntitySet="Teacher">
+                <ScalarProperty Name="TID" ColumnName="TID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teacher_Teaches_subject">
+            <EntityTypeMapping TypeName="NMSModel.Teacher_Teaches_subject">
+              <MappingFragment StoreEntitySet="Teacher_Teaches_subject">
+                <ScalarProperty Name="TSRating" ColumnName="TSRating" />
+                <ScalarProperty Name="TID" ColumnName="TID" />
+                <ScalarProperty Name="SubID" ColumnName="SubID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="AddNotes" FunctionName="NMSModel.Store.AddNotes" />
+          <FunctionImportMapping FunctionImportName="GetAllFilesByOrder" FunctionName="NMSModel.Store.GetAllFilesByOrder">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NMSModel.GetAllFilesByOrder_Result">
+                <ScalarProperty Name="TID" ColumnName="TID" />
+                <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+                <ScalarProperty Name="SubID" ColumnName="SubID" />
+                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+                <ScalarProperty Name="NotesID" ColumnName="NotesID" />
+                <ScalarProperty Name="PDFFile" ColumnName="PDFFile" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllPDFFilesByOrder" FunctionName="NMSModel.Store.GetAllFilesByOrder" />
+          <FunctionImportMapping FunctionImportName="GetAllPDFSFilesByOrder" FunctionName="NMSModel.Store.GetAllFilesByOrder" />
+          <FunctionImportMapping FunctionImportName="GetAllTHEPDFFilesByOrder" FunctionName="NMSModel.Store.GetAllFilesByOrder" />
+          <EntitySetMapping Name="GroupMembers">
+            <EntityTypeMapping TypeName="NMSModel.GroupMember">
+              <MappingFragment StoreEntitySet="GroupMember">
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="USN" ColumnName="USN" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GroupMessages">
+            <EntityTypeMapping TypeName="NMSModel.GroupMessage">
+              <MappingFragment StoreEntitySet="GroupMessage">
+                <ScalarProperty Name="Media" ColumnName="Media" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="message" ColumnName="message" />
+                <ScalarProperty Name="USN" ColumnName="USN" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GroupMessageTeachers">
+            <EntityTypeMapping TypeName="NMSModel.GroupMessageTeacher">
+              <MappingFragment StoreEntitySet="GroupMessageTeacher">
+                <ScalarProperty Name="Media" ColumnName="Media" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="message" ColumnName="message" />
+                <ScalarProperty Name="TID" ColumnName="TID" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Groups">
+            <EntityTypeMapping TypeName="NMSModel.Group">
+              <MappingFragment StoreEntitySet="Groups">
+                <ScalarProperty Name="subID" ColumnName="subID" />
+                <ScalarProperty Name="classID" ColumnName="classID" />
+                <ScalarProperty Name="GroupIcon" ColumnName="GroupIcon" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="CreateGroup" FunctionName="NMSModel.Store.CreateGroup" />
+          <FunctionImportMapping FunctionImportName="CreateGroups" FunctionName="NMSModel.Store.CreateGroup" />
+          <EntitySetMapping Name="GroupMemberTeachers">
+            <EntityTypeMapping TypeName="NMSModel.GroupMemberTeacher">
+              <MappingFragment StoreEntitySet="GroupMemberTeacher">
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="TID" ColumnName="TID" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="AddGroupMemberTeacherss" FunctionName="NMSModel.Store.AddGroupMemberTeacherss" />
+          <FunctionImportMapping FunctionImportName="AddGroupMemberTeachersss" FunctionName="NMSModel.Store.AddGroupMemberTeacherss" />
+          <FunctionImportMapping FunctionImportName="ShowGroupMessageTeacher" FunctionName="NMSModel.Store.ShowGroupMessageTeacher">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NMSModel.ShowGroupMessageTeacher_Result">
+                <ScalarProperty Name="TID" ColumnName="TID" />
+                <ScalarProperty Name="message" ColumnName="message" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ShowGroupMessageTeachers" FunctionName="NMSModel.Store.ShowGroupMessageTeacher" />
+          <FunctionImportMapping FunctionImportName="CreateGroupMessageTeacher" FunctionName="NMSModel.Store.CreateGroupMessageTeacher">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NMSModel.CreateGroupMessageTeacher_Result">
+                <ScalarProperty Name="TID" ColumnName="TID" />
+                <ScalarProperty Name="message" ColumnName="message" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CreateGroupMessageTeachers" FunctionName="NMSModel.Store.CreateGroupMessageTeacher" />
+          <FunctionImportMapping FunctionImportName="ProjectGroupMessageTeacher" FunctionName="NMSModel.Store.ProjectGroupMessageTeacher">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NMSModel.ProjectGroupMessageTeacher_Result">
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="TID" ColumnName="TID" />
+                <ScalarProperty Name="message" ColumnName="message" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Media" ColumnName="Media" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ProjectGroupMessageTeachers" FunctionName="NMSModel.Store.ProjectGroupMessageTeacher" />
+          <EntitySetMapping Name="NGroupMemberTeachers">
+            <EntityTypeMapping TypeName="NMSModel.NGroupMemberTeacher">
+              <MappingFragment StoreEntitySet="NGroupMemberTeacher">
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="TID" ColumnName="TID" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NGroupMessageTeachers">
+            <EntityTypeMapping TypeName="NMSModel.NGroupMessageTeacher">
+              <MappingFragment StoreEntitySet="NGroupMessageTeacher">
+                <ScalarProperty Name="Media" ColumnName="Media" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="message" ColumnName="message" />
+                <ScalarProperty Name="TID" ColumnName="TID" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NGroups">
+            <EntityTypeMapping TypeName="NMSModel.NGroup">
+              <MappingFragment StoreEntitySet="NGroups">
+                <ScalarProperty Name="subID" ColumnName="subID" />
+                <ScalarProperty Name="classID" ColumnName="classID" />
+                <ScalarProperty Name="GroupIcon" ColumnName="GroupIcon" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="NAddGroupMemberTeachers" FunctionName="NMSModel.Store.NAddGroupMemberTeachers" />
+          <FunctionImportMapping FunctionImportName="NCreateGroup" FunctionName="NMSModel.Store.NCreateGroup" />
+          <FunctionImportMapping FunctionImportName="NCreateGroups" FunctionName="NMSModel.Store.NCreateGroup" />
+          <FunctionImportMapping FunctionImportName="NAddGroupMemberTeacherss" FunctionName="NMSModel.Store.NAddGroupMemberTeachers" />
+          <FunctionImportMapping FunctionImportName="NGetGroupID" FunctionName="NMSModel.Store.NGetGroupID" />
+          <FunctionImportMapping FunctionImportName="NGetGroupIDs" FunctionName="NMSModel.Store.NGetGroupID" />
+          <FunctionImportMapping FunctionImportName="NGetGroupIDss" FunctionName="NMSModel.Store.NGetGroupID" />
+          <FunctionImportMapping FunctionImportName="NInsertGroupMemberTeacher" FunctionName="NMSModel.Store.NInsertGroupMemberTeacher" />
+          <FunctionImportMapping FunctionImportName="NInsertGroupMemberTeachers" FunctionName="NMSModel.Store.NInsertGroupMemberTeacher" />
+          <FunctionImportMapping FunctionImportName="NMakeGroups" FunctionName="NMSModel.Store.NMakeGroups" />
+          <FunctionImportMapping FunctionImportName="NMakeGroupss" FunctionName="NMSModel.Store.NMakeGroups" />
+          <FunctionImportMapping FunctionImportName="NGetGroupIDs1" FunctionName="NMSModel.Store.NGetGroupIDs">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NMSModel.NGetGroupIDs1_Result">
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="GroupIcon" ColumnName="GroupIcon" />
+                <ScalarProperty Name="classID" ColumnName="classID" />
+                <ScalarProperty Name="subID" ColumnName="subID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="NGetGroupIDsss" FunctionName="NMSModel.Store.NGetGroupIDs" />
+          <FunctionImportMapping FunctionImportName="NInsertGroupMemberTeachers1" FunctionName="NMSModel.Store.NInsertGroupMemberTeachers" />
+          <FunctionImportMapping FunctionImportName="NInsertGroupMemberTeacherss" FunctionName="NMSModel.Store.NInsertGroupMemberTeachers" />
+          <FunctionImportMapping FunctionImportName="NInsertGroupMemberTeacher2" FunctionName="NMSModel.Store.NInsertGroupMemberTeachers" />
+          <EntitySetMapping Name="NGroupMemberTeachers1">
+            <EntityTypeMapping TypeName="NMSModel.NGroupMemberTeacher1">
+              <MappingFragment StoreEntitySet="NGroupMemberTeachers">
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="TID" ColumnName="TID" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NGroupMessages">
+            <EntityTypeMapping TypeName="NMSModel.NGroupMessage">
+              <MappingFragment StoreEntitySet="NGroupMessages">
+                <ScalarProperty Name="Media" ColumnName="Media" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="message" ColumnName="message" />
+                <ScalarProperty Name="USN" ColumnName="USN" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NGroupMessageTeachers1">
+            <EntityTypeMapping TypeName="NMSModel.NGroupMessageTeacher1">
+              <MappingFragment StoreEntitySet="NGroupMessageTeachers">
+                <ScalarProperty Name="Media" ColumnName="Media" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="message" ColumnName="message" />
+                <ScalarProperty Name="TID" ColumnName="TID" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="NNInsertGroupMemberTeachers" FunctionName="NMSModel.Store.NNInsertGroupMemberTeachers" />
+          <FunctionImportMapping FunctionImportName="NNNInsertGroupMemberTeachers" FunctionName="NMSModel.Store.NNInsertGroupMemberTeachers" />
+          <FunctionImportMapping FunctionImportName="NEInsertGroupMemberTeachers" FunctionName="NMSModel.Store.NEInsertGroupMemberTeachers" />
+          <FunctionImportMapping FunctionImportName="NEWInsertGroupMemberTeachers" FunctionName="NMSModel.Store.NEInsertGroupMemberTeachers" />
+          <FunctionImportMapping FunctionImportName="NGetAllGroup" FunctionName="NMSModel.Store.NGetAllGroup">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NMSModel.NGetAllGroup_Result">
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="GroupIcon" ColumnName="GroupIcon" />
+                <ScalarProperty Name="classID" ColumnName="classID" />
+                <ScalarProperty Name="subID" ColumnName="subID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="NGetAllGroups" FunctionName="NMSModel.Store.NGetAllGroup" />
+          <FunctionImportMapping FunctionImportName="GetAllGroupMessage" FunctionName="NMSModel.Store.GetAllGroupMessage">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NMSModel.GetAllGroupMessage_Result">
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="TID" ColumnName="TID" />
+                <ScalarProperty Name="message" ColumnName="message" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Media" ColumnName="Media" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="NGetAllGroupMessage" FunctionName="NMSModel.Store.GetAllGroupMessage" />
+          <FunctionImportMapping FunctionImportName="GetGroupChat" FunctionName="NMSModel.Store.GetGroupChat">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NMSModel.GetGroupChat_Result">
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="GroupIcon" ColumnName="GroupIcon" />
+                <ScalarProperty Name="classID" ColumnName="classID" />
+                <ScalarProperty Name="subID" ColumnName="subID" />
+                <ScalarProperty Name="GroupID1" ColumnName="GroupID1" />
+                <ScalarProperty Name="TID" ColumnName="TID" />
+                <ScalarProperty Name="username" ColumnName="username" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="NGetGroupChat" FunctionName="NMSModel.Store.GetGroupChat" />
+          <FunctionImportMapping FunctionImportName="GetTeachersNotes" FunctionName="NMSModel.Store.GetTeachersNotes">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NMSModel.GetTeachersNotes_Result">
+                <ScalarProperty Name="TID" ColumnName="TID" />
+                <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+                <ScalarProperty Name="SubID" ColumnName="SubID" />
+                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+                <ScalarProperty Name="NotesID" ColumnName="NotesID" />
+                <ScalarProperty Name="PDFFile" ColumnName="PDFFile" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetTeachersPdfNotes" FunctionName="NMSModel.Store.GetTeachersNotes" />
+          <FunctionImportMapping FunctionImportName="InsertMessageIntoGroup" FunctionName="NMSModel.Store.InsertMessageIntoGroup" />
+          <FunctionImportMapping FunctionImportName="NInsertMessageIntoGroup" FunctionName="NMSModel.Store.InsertMessageIntoGroup" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,116 @@
+﻿@model NMS.Models.Student
+@{
+    ViewBag.Title = "Index";
+    Layout = "";
+}
+
+
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <title>Teacher Login</title>
+    <!-- Meta-Tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Mask Login Form a Responsive Web Template, Bootstrap Web Templates, Flat Web Templates, Android Compatible Web Template, Smartphone Compatible Web Template, Free Webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design">
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <!-- //Meta-Tags -->
+    <!-- Index-Page-CSS -->
+    <link rel="stylesheet" href="/web/css/style.css" type="text/css" media="all">
+    <!-- //Custom-Stylesheet-Links -->
+    <!--fonts -->
+    <link href="//fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800" rel="stylesheet">
+    <!-- //fonts -->
+    <!-- Font-Awesome-File -->
+    <link rel="stylesheet" href="/web/css/font-awesome.css" type="text/css" media="all">
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="title-agile">Student Login Form</h1>
+        <div class="cont_centrar">
+            <div class="cont_login">
+                <div class="cont_info_log_sign_up">
+                    <div class="col_md_login">
+                        <div class="cont_ba_opcitiy text-center">
+                            <h2>Login</h2>
+                            <p>Press Login button in order to enter your detail</p>
+                            <button class="btn_login" onclick="cambiar_login()">LOGIN</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="cont_forms">
+                    <div class="cont_img_back_">
+                        <img src="/web/images/bg.jpg" alt="" />
+                    </div>
+                    <div class="cont_form_login">
+                        <a href="#" onclick="ocultar_login_sign_up()">
+                            <i class="fa fa-close" aria-hidden="true"></i>
+                        </a>
+                        @using (Html.BeginForm("index", "StudentLogin", FormMethod.Post))
+                        {
+                            <fieldset>
+
+                                @Html.AntiForgeryToken()
+                                @Html.ValidationSummary(true)
+                                @if (@ViewBag.Message != null)
+                                {
+                                    <div style="border: 1px solid red">
+                                        @ViewBag.Message
+                                    </div>
+                                }
+                                <table>
+                                    <tr>
+
+                                        <td>@Html.TextBoxFor(a => a.USN, new { placeholder = "USN", style = "padding: 15px , margin - top:20p, width:290px,border: none,color: #333,background: #fff,outline: none,font - size:0.95em" })</td>
+                                        <td>@Html.ValidationMessageFor(a => a.USN)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            @Html.PasswordFor(a => a.Password, new { placeholder = "Password" })
+                                        </td>
+                                        <td>
+                                            @Html.ValidationMessageFor(a => a.Password)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="submit" value="Login" />
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                </table>
+                            </fieldset>
+                        }
+                    </div>
+                    <div class="cont_form_sign_up">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copy-wthree text-center">
+            <p>
+                Â© 2018 NOTES MANAGEMENT SYSTEM
+
+            </p>
+        </div>
+        <!--//copyright-->
+    </div>
+    <script src="/web/js/jquery-2.2.3.min.js"></script>
+    <!-- form js -->
+    <script src="/web/js/script.js"></script>
+    <!-- form js -->
+
+</body>
+<!-- //Body -->
+
+</html>

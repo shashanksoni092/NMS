@@ -1,0 +1,31 @@
+﻿@model NMS.Models.Module
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Module</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ModuleName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModuleName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ModuleID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+<div>
+    @Html.ActionLink("Back to AdminPortal ", "index", "AdminPortal")
+
+</div>
+

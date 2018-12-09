@@ -1,0 +1,337 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="NMSModelStoreContainer" CdmEntityContainer="NMSEntities">
+    <EntitySetMapping Name="Classes">
+      <EntityTypeMapping TypeName="NMSModel.Class">
+        <MappingFragment StoreEntitySet="Class">
+          <ScalarProperty Name="classID" ColumnName="classID" />
+          <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Class_Has_Subject">
+      <EntityTypeMapping TypeName="NMSModel.Class_Has_Subject">
+        <MappingFragment StoreEntitySet="Class_Has_Subject">
+          <ScalarProperty Name="CSRating" ColumnName="CSRating" />
+          <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+          <ScalarProperty Name="SubID" ColumnName="SubID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Modules">
+      <EntityTypeMapping TypeName="NMSModel.Module">
+        <MappingFragment StoreEntitySet="Module">
+          <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+          <ScalarProperty Name="ModuleName" ColumnName="ModuleName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Notes">
+      <EntityTypeMapping TypeName="NMSModel.Note">
+        <MappingFragment StoreEntitySet="Notes">
+          <ScalarProperty Name="TID" ColumnName="TID" />
+          <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+          <ScalarProperty Name="SubID" ColumnName="SubID" />
+          <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+          <ScalarProperty Name="NotesID" ColumnName="NotesID" />
+          <ScalarProperty Name="PDFFile" ColumnName="PDFFile" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Students">
+      <EntityTypeMapping TypeName="NMSModel.Student">
+        <MappingFragment StoreEntitySet="Student">
+          <ScalarProperty Name="USN" ColumnName="USN" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Subjects">
+      <EntityTypeMapping TypeName="NMSModel.Subject">
+        <MappingFragment StoreEntitySet="Subject">
+          <ScalarProperty Name="SubID" ColumnName="SubID" />
+          <ScalarProperty Name="SubName" ColumnName="SubName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Subject_Has_Module">
+      <EntityTypeMapping TypeName="NMSModel.Subject_Has_Module">
+        <MappingFragment StoreEntitySet="Subject_Has_Module">
+          <ScalarProperty Name="SMRating" ColumnName="SMRating" />
+          <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+          <ScalarProperty Name="SubID" ColumnName="SubID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Teachers">
+      <EntityTypeMapping TypeName="NMSModel.Teacher">
+        <MappingFragment StoreEntitySet="Teacher">
+          <ScalarProperty Name="TID" ColumnName="TID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Teacher_Teaches_subject">
+      <EntityTypeMapping TypeName="NMSModel.Teacher_Teaches_subject">
+        <MappingFragment StoreEntitySet="Teacher_Teaches_subject">
+          <ScalarProperty Name="TSRating" ColumnName="TSRating" />
+          <ScalarProperty Name="TID" ColumnName="TID" />
+          <ScalarProperty Name="SubID" ColumnName="SubID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="AddNotes" FunctionName="NMSModel.Store.AddNotes" />
+    <FunctionImportMapping FunctionImportName="GetAllFilesByOrder" FunctionName="NMSModel.Store.GetAllFilesByOrder">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="NMSModel.GetAllFilesByOrder_Result">
+          <ScalarProperty Name="TID" ColumnName="TID" />
+          <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+          <ScalarProperty Name="SubID" ColumnName="SubID" />
+          <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+          <ScalarProperty Name="NotesID" ColumnName="NotesID" />
+          <ScalarProperty Name="PDFFile" ColumnName="PDFFile" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetAllPDFFilesByOrder" FunctionName="NMSModel.Store.GetAllFilesByOrder" />
+    <FunctionImportMapping FunctionImportName="GetAllPDFSFilesByOrder" FunctionName="NMSModel.Store.GetAllFilesByOrder" />
+    <FunctionImportMapping FunctionImportName="GetAllTHEPDFFilesByOrder" FunctionName="NMSModel.Store.GetAllFilesByOrder" />
+    <EntitySetMapping Name="GroupMembers">
+      <EntityTypeMapping TypeName="NMSModel.GroupMember">
+        <MappingFragment StoreEntitySet="GroupMember">
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="USN" ColumnName="USN" />
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GroupMessages">
+      <EntityTypeMapping TypeName="NMSModel.GroupMessage">
+        <MappingFragment StoreEntitySet="GroupMessage">
+          <ScalarProperty Name="Media" ColumnName="Media" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="USN" ColumnName="USN" />
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GroupMessageTeachers">
+      <EntityTypeMapping TypeName="NMSModel.GroupMessageTeacher">
+        <MappingFragment StoreEntitySet="GroupMessageTeacher">
+          <ScalarProperty Name="Media" ColumnName="Media" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="TID" ColumnName="TID" />
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Groups">
+      <EntityTypeMapping TypeName="NMSModel.Group">
+        <MappingFragment StoreEntitySet="Groups">
+          <ScalarProperty Name="subID" ColumnName="subID" />
+          <ScalarProperty Name="classID" ColumnName="classID" />
+          <ScalarProperty Name="GroupIcon" ColumnName="GroupIcon" />
+          <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="CreateGroup" FunctionName="NMSModel.Store.CreateGroup" />
+    <FunctionImportMapping FunctionImportName="CreateGroups" FunctionName="NMSModel.Store.CreateGroup" />
+    <EntitySetMapping Name="GroupMemberTeachers">
+      <EntityTypeMapping TypeName="NMSModel.GroupMemberTeacher">
+        <MappingFragment StoreEntitySet="GroupMemberTeacher">
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="TID" ColumnName="TID" />
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="AddGroupMemberTeacherss" FunctionName="NMSModel.Store.AddGroupMemberTeacherss" />
+    <FunctionImportMapping FunctionImportName="AddGroupMemberTeachersss" FunctionName="NMSModel.Store.AddGroupMemberTeacherss" />
+    <FunctionImportMapping FunctionImportName="ShowGroupMessageTeacher" FunctionName="NMSModel.Store.ShowGroupMessageTeacher">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="NMSModel.ShowGroupMessageTeacher_Result">
+          <ScalarProperty Name="TID" ColumnName="TID" />
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ShowGroupMessageTeachers" FunctionName="NMSModel.Store.ShowGroupMessageTeacher" />
+    <FunctionImportMapping FunctionImportName="CreateGroupMessageTeacher" FunctionName="NMSModel.Store.CreateGroupMessageTeacher">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="NMSModel.CreateGroupMessageTeacher_Result">
+          <ScalarProperty Name="TID" ColumnName="TID" />
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CreateGroupMessageTeachers" FunctionName="NMSModel.Store.CreateGroupMessageTeacher" />
+    <FunctionImportMapping FunctionImportName="ProjectGroupMessageTeacher" FunctionName="NMSModel.Store.ProjectGroupMessageTeacher">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="NMSModel.ProjectGroupMessageTeacher_Result">
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+          <ScalarProperty Name="TID" ColumnName="TID" />
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Media" ColumnName="Media" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ProjectGroupMessageTeachers" FunctionName="NMSModel.Store.ProjectGroupMessageTeacher" />
+    <EntitySetMapping Name="NGroupMemberTeachers">
+      <EntityTypeMapping TypeName="NMSModel.NGroupMemberTeacher">
+        <MappingFragment StoreEntitySet="NGroupMemberTeacher">
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="TID" ColumnName="TID" />
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NGroupMessageTeachers">
+      <EntityTypeMapping TypeName="NMSModel.NGroupMessageTeacher">
+        <MappingFragment StoreEntitySet="NGroupMessageTeacher">
+          <ScalarProperty Name="Media" ColumnName="Media" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="TID" ColumnName="TID" />
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NGroups">
+      <EntityTypeMapping TypeName="NMSModel.NGroup">
+        <MappingFragment StoreEntitySet="NGroups">
+          <ScalarProperty Name="subID" ColumnName="subID" />
+          <ScalarProperty Name="classID" ColumnName="classID" />
+          <ScalarProperty Name="GroupIcon" ColumnName="GroupIcon" />
+          <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="NAddGroupMemberTeachers" FunctionName="NMSModel.Store.NAddGroupMemberTeachers" />
+    <FunctionImportMapping FunctionImportName="NCreateGroup" FunctionName="NMSModel.Store.NCreateGroup" />
+    <FunctionImportMapping FunctionImportName="NCreateGroups" FunctionName="NMSModel.Store.NCreateGroup" />
+    <FunctionImportMapping FunctionImportName="NAddGroupMemberTeacherss" FunctionName="NMSModel.Store.NAddGroupMemberTeachers" />
+    <FunctionImportMapping FunctionImportName="NGetGroupID" FunctionName="NMSModel.Store.NGetGroupID" />
+    <FunctionImportMapping FunctionImportName="NGetGroupIDs" FunctionName="NMSModel.Store.NGetGroupID" />
+    <FunctionImportMapping FunctionImportName="NGetGroupIDss" FunctionName="NMSModel.Store.NGetGroupID" />
+    <FunctionImportMapping FunctionImportName="NInsertGroupMemberTeacher" FunctionName="NMSModel.Store.NInsertGroupMemberTeacher" />
+    <FunctionImportMapping FunctionImportName="NInsertGroupMemberTeachers" FunctionName="NMSModel.Store.NInsertGroupMemberTeacher" />
+    <FunctionImportMapping FunctionImportName="NMakeGroups" FunctionName="NMSModel.Store.NMakeGroups" />
+    <FunctionImportMapping FunctionImportName="NMakeGroupss" FunctionName="NMSModel.Store.NMakeGroups" />
+    <FunctionImportMapping FunctionImportName="NGetGroupIDs1" FunctionName="NMSModel.Store.NGetGroupIDs">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="NMSModel.NGetGroupIDs1_Result">
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+          <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+          <ScalarProperty Name="GroupIcon" ColumnName="GroupIcon" />
+          <ScalarProperty Name="classID" ColumnName="classID" />
+          <ScalarProperty Name="subID" ColumnName="subID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="NGetGroupIDsss" FunctionName="NMSModel.Store.NGetGroupIDs" />
+    <FunctionImportMapping FunctionImportName="NInsertGroupMemberTeachers1" FunctionName="NMSModel.Store.NInsertGroupMemberTeachers" />
+    <FunctionImportMapping FunctionImportName="NInsertGroupMemberTeacherss" FunctionName="NMSModel.Store.NInsertGroupMemberTeachers" />
+    <FunctionImportMapping FunctionImportName="NInsertGroupMemberTeacher2" FunctionName="NMSModel.Store.NInsertGroupMemberTeachers" />
+    <EntitySetMapping Name="NGroupMemberTeachers1">
+      <EntityTypeMapping TypeName="NMSModel.NGroupMemberTeacher1">
+        <MappingFragment StoreEntitySet="NGroupMemberTeachers">
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="TID" ColumnName="TID" />
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NGroupMessages">
+      <EntityTypeMapping TypeName="NMSModel.NGroupMessage">
+        <MappingFragment StoreEntitySet="NGroupMessages">
+          <ScalarProperty Name="Media" ColumnName="Media" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="USN" ColumnName="USN" />
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NGroupMessageTeachers1">
+      <EntityTypeMapping TypeName="NMSModel.NGroupMessageTeacher1">
+        <MappingFragment StoreEntitySet="NGroupMessageTeachers">
+          <ScalarProperty Name="Media" ColumnName="Media" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="TID" ColumnName="TID" />
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="NNInsertGroupMemberTeachers" FunctionName="NMSModel.Store.NNInsertGroupMemberTeachers" />
+    <FunctionImportMapping FunctionImportName="NNNInsertGroupMemberTeachers" FunctionName="NMSModel.Store.NNInsertGroupMemberTeachers" />
+    <FunctionImportMapping FunctionImportName="NEInsertGroupMemberTeachers" FunctionName="NMSModel.Store.NEInsertGroupMemberTeachers" />
+    <FunctionImportMapping FunctionImportName="NEWInsertGroupMemberTeachers" FunctionName="NMSModel.Store.NEInsertGroupMemberTeachers" />
+    <FunctionImportMapping FunctionImportName="NGetAllGroup" FunctionName="NMSModel.Store.NGetAllGroup">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="NMSModel.NGetAllGroup_Result">
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+          <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+          <ScalarProperty Name="GroupIcon" ColumnName="GroupIcon" />
+          <ScalarProperty Name="classID" ColumnName="classID" />
+          <ScalarProperty Name="subID" ColumnName="subID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="NGetAllGroups" FunctionName="NMSModel.Store.NGetAllGroup" />
+    <FunctionImportMapping FunctionImportName="GetAllGroupMessage" FunctionName="NMSModel.Store.GetAllGroupMessage">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="NMSModel.GetAllGroupMessage_Result">
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+          <ScalarProperty Name="TID" ColumnName="TID" />
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Media" ColumnName="Media" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="NGetAllGroupMessage" FunctionName="NMSModel.Store.GetAllGroupMessage" />
+    <FunctionImportMapping FunctionImportName="GetGroupChat" FunctionName="NMSModel.Store.GetGroupChat">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="NMSModel.GetGroupChat_Result">
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+          <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+          <ScalarProperty Name="GroupIcon" ColumnName="GroupIcon" />
+          <ScalarProperty Name="classID" ColumnName="classID" />
+          <ScalarProperty Name="subID" ColumnName="subID" />
+          <ScalarProperty Name="GroupID1" ColumnName="GroupID1" />
+          <ScalarProperty Name="TID" ColumnName="TID" />
+          <ScalarProperty Name="username" ColumnName="username" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="NGetGroupChat" FunctionName="NMSModel.Store.GetGroupChat" />
+    <FunctionImportMapping FunctionImportName="GetTeachersNotes" FunctionName="NMSModel.Store.GetTeachersNotes">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="NMSModel.GetTeachersNotes_Result">
+          <ScalarProperty Name="TID" ColumnName="TID" />
+          <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+          <ScalarProperty Name="SubID" ColumnName="SubID" />
+          <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+          <ScalarProperty Name="NotesID" ColumnName="NotesID" />
+          <ScalarProperty Name="PDFFile" ColumnName="PDFFile" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetTeachersPdfNotes" FunctionName="NMSModel.Store.GetTeachersNotes" />
+    <FunctionImportMapping FunctionImportName="InsertMessageIntoGroup" FunctionName="NMSModel.Store.InsertMessageIntoGroup" />
+    <FunctionImportMapping FunctionImportName="NInsertMessageIntoGroup" FunctionName="NMSModel.Store.InsertMessageIntoGroup" />
+  </EntityContainerMapping>
+</Mapping>

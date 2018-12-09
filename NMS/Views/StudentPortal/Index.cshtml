@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_SPLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h3>hello!!</h3>
+        <table>
+            <tr>
+                <td>TID:</td>
+                <td>@Session["USN"].ToString()</td>
+            </tr>
+            <tr>
+                <td>Name:</td>
+                <td>@Session["Name"].ToString()</td>
+            </tr>
+
+
+        </table>
+    </div>
+</body>
+</html>

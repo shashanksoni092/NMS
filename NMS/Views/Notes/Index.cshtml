@@ -1,0 +1,57 @@
+﻿@model IEnumerable<NMS.Models.Note>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PDFFile)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Class.ClassName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Module.ModuleName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Subject.SubName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Teacher.Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PDFFile)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Class.ClassName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Module.ModuleName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Subject.SubName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Teacher.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.NotesID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.NotesID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.NotesID })
+        </td>
+    </tr>
+}
+
+</table>

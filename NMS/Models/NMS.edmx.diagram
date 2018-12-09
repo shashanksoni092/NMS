@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7a16cc0866924d0685102df03d6f7965" Name="Diagram1">
+        <EntityTypeShape EntityType="NMSModel.Class" Width="1.5" PointX="0.75" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="NMSModel.Class_Has_Subject" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NMSModel.Module" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="NMSModel.Note" Width="1.5" PointX="6" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NMSModel.Student" Width="1.5" PointX="5.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NMSModel.Subject" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NMSModel.Subject_Has_Module" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NMSModel.Teacher" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NMSModel.Teacher_Teaches_subject" Width="1.5" PointX="3" PointY="9.875" IsExpanded="true" />
+        <AssociationConnector Association="NMSModel.FK__Class_Has__Class__164452B1" ManuallyRouted="false" />
+        <AssociationConnector Association="NMSModel.FK__Notes__ClassID__286302EC" ManuallyRouted="false" />
+        <AssociationConnector Association="NMSModel.FK__Class_Has__SubID__173876EA" ManuallyRouted="false" />
+        <AssociationConnector Association="NMSModel.FK__Notes__ModuleID__267ABA7A" ManuallyRouted="false" />
+        <AssociationConnector Association="NMSModel.FK__Subject_H__Modul__1FCDBCEB" ManuallyRouted="false" />
+        <AssociationConnector Association="NMSModel.FK__Notes__SubID__276EDEB3" ManuallyRouted="false" />
+        <AssociationConnector Association="NMSModel.FK__Notes__TID__25869641" ManuallyRouted="false" />
+        <AssociationConnector Association="NMSModel.FK__Subject_H__SubID__20C1E124" ManuallyRouted="false" />
+        <AssociationConnector Association="NMSModel.FK__Teacher_T__SubID__0DAF0CB0" ManuallyRouted="false" />
+        <AssociationConnector Association="NMSModel.FK__Teacher_Tea__TID__0CBAE877" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="NMSModel.GroupMember" Width="1.5" PointX="11.25" PointY="6.75" />
+        <EntityTypeShape EntityType="NMSModel.GroupMessage" Width="1.5" PointX="8.25" PointY="9.5" />
+        <EntityTypeShape EntityType="NMSModel.GroupMessageTeacher" Width="1.5" PointX="8.25" PointY="6.125" />
+        <EntityTypeShape EntityType="NMSModel.Group" Width="1.5" PointX="6" PointY="10.875" />
+        <AssociationConnector Association="NMSModel.FK__Groups__classID__2F10007B" />
+        <AssociationConnector Association="NMSModel.FK__GroupMemb__Group__34C8D9D1" />
+        <AssociationConnector Association="NMSModel.FK__GroupMember__USN__35BCFE0A" />
+        <AssociationConnector Association="NMSModel.FK__GroupMess__Group__5DCAEF64" />
+        <AssociationConnector Association="NMSModel.FK__GroupMessag__USN__5EBF139D" />
+        <AssociationConnector Association="NMSModel.FK__GroupMess__Group__6477ECF3" />
+        <AssociationConnector Association="NMSModel.FK__GroupMessag__TID__656C112C" />
+        <AssociationConnector Association="NMSModel.FK__Groups__subID__300424B4" />
+        <EntityTypeShape EntityType="NMSModel.GroupMemberTeacher" Width="2.5" PointX="11.25" PointY="9.5" />
+        <AssociationConnector Association="NMSModel.FK__GroupMemb__Group__71D1E811" />
+        <AssociationConnector Association="NMSModel.FK__GroupMember__TID__72C60C4A" />
+        <EntityTypeShape EntityType="NMSModel.NGroupMemberTeacher" Width="1.5" PointX="8.25" PointY="2.625" />
+        <EntityTypeShape EntityType="NMSModel.NGroupMessageTeacher" Width="1.5" PointX="11.25" PointY="3.375" />
+        <EntityTypeShape EntityType="NMSModel.NGroup" Width="1.5" PointX="3" PointY="13.25" />
+        <AssociationConnector Association="NMSModel.FK__NGroups__classID__1BC821DD" />
+        <AssociationConnector Association="NMSModel.FK__NGroupMem__Group__2180FB33" />
+        <AssociationConnector Association="NMSModel.FK__NGroupMes__Group__2739D489" />
+        <AssociationConnector Association="NMSModel.FK__NGroupMembe__TID__22751F6C" />
+        <AssociationConnector Association="NMSModel.FK__NGroupMessa__TID__282DF8C2" />
+        <AssociationConnector Association="NMSModel.FK__NGroups__subID__1CBC4616" />
+        <EntityTypeShape EntityType="NMSModel.NGroupMemberTeacher1" Width="1.5" PointX="11" PointY="13" />
+        <EntityTypeShape EntityType="NMSModel.NGroupMessage" Width="1.5" PointX="14" PointY="6.25" />
+        <EntityTypeShape EntityType="NMSModel.NGroupMessageTeacher1" Width="1.5" PointX="11" PointY="0.75" />
+        <AssociationConnector Association="NMSModel.FK__NGroupMem__Group__37703C52" />
+        <AssociationConnector Association="NMSModel.FK__NGroupMembe__TID__3864608B" />
+        <AssociationConnector Association="NMSModel.FK__NGroupMes__Group__3D2915A8" />
+        <AssociationConnector Association="NMSModel.FK__NGroupMessa__USN__3E1D39E1" />
+        <AssociationConnector Association="NMSModel.FK__NGroupMes__Group__42E1EEFE" />
+        <AssociationConnector Association="NMSModel.FK__NGroupMessa__TID__43D61337" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

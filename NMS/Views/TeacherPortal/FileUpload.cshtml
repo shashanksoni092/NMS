@@ -1,0 +1,204 @@
+﻿
+@model NMS.Models.Note
+@{
+    /**/
+
+    /**/
+
+    ViewBag.Title = "FileUpload";
+    Layout = "~/Views/Shared/_TPLayout.cshtml";
+
+}
+<!doctype html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>N M S - Teacher Portal</title>
+    <meta name="description" content="Sufee Admin - HTML5 Admin Template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="apple-icon.png">
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <link rel="stylesheet" href="~/assets/css/normalize.css">
+    <link rel="stylesheet" href="~/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/assets/css/themify-icons.css">
+    <link rel="stylesheet" href="~/assets/css/flag-icon.min.css">
+    <link rel="stylesheet" href="~/assets/css/cs-skin-elastic.css">
+    <!-- <link rel="stylesheet" href="assets/css/bootstrap-select.less"> -->
+    <link rel="stylesheet" href="~/assets/scss/style.css">
+    <link href="~/assets/css/lib/vector-map/jqvmap.min.css" rel="stylesheet">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
+
+</head>
+<body>
+    <div id="right-panel" class="right-panel">
+
+        <!-- Header-->
+        <header id="header" class="header">
+
+            <div class="header-menu">
+                <div class="col-sm-7">
+
+                    <h2 style="text-align: right;">  <img style="width: 7%; margin-right: 3% " src="~/assets/images/logos.png" /> Notes Management System </h2>
+
+                </div>
+
+            </div>
+
+        </header><!-- /header -->
+        <!-- Header-->
+
+        <div class="breadcrumbs">
+            <div class="col-sm-4">
+                <div class="page-header float-left">
+                    <div class="page-title">
+                        <h1>Teacher Dashboard</h1>
+                        @using (Html.BeginForm("LogOff", "TeacherPortal", FormMethod.Post, new { role = "form" }))
+    {
+                    @Html.AntiForgeryToken()
+                    <input type="submit" value="Logout" class="btn btn-primary" />
+}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="content mt-3">
+            <div class="animated fadeIn">
+
+                <div class="col-lg-1"> </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <strong class="card-title mb-3">Profile Card</strong>
+                        </div>
+                        <div class="card-body">
+                            <div class="mx-auto d-block">
+                                <img class="rounded-circle mx-auto d-block" src="~/assets/images/admin.jpg" alt="Card image cap">
+                                <h5 class="text-sm-center mt-2 mb-1">@Session["Name"]</h5>
+                                <div class="location text-sm-center"><i class="fa fa-map-marker"></i> Professor of CSE, RNSIT</div>
+                            </div>
+                            <hr>
+                            <div class="card-text text-sm-center">
+                                <a href="#"><i class="fa fa-facebook pr-1"></i></a>
+                                <a href="#"><i class="fa fa-twitter pr-1"></i></a>
+                                <a href="#"><i class="fa fa-linkedin pr-1"></i></a>
+                                <a href="#"><i class="fa fa-pinterest pr-1"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-1"></div>
+
+
+
+
+            </div>
+        </div>
+
+
+        <div class="col-lg-1"></div>
+
+
+
+
+
+
+
+
+        @if (Session["TID"] != null)
+        {
+            <h4>Welcome,@Session["Name"].ToString()</h4>
+
+            <h1>Upload the details of Notes</h1>
+            using (Html.BeginForm("FileUpload", "TeacherPortal", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+
+                @Html.AntiForgeryToken()
+
+                <table>
+                    <tr>
+                        <td>
+                            <h2>*Fill all the fields*</h2>
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(x => x.TID, new { @Value = @Session["TID"].ToString(), @type = "hidden" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.LabelFor(model => model.SubID, "SubID", htmlAttributes: new { @class = "control-label col-md-2" })
+                        </td>
+                        <td>
+                            @Html.DropDownList("SubID", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.SubID, "", new { @class = "text-danger" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.LabelFor(model => model.ClassID, "ClassID", htmlAttributes: new { @class = "control-label col-md-2" })
+                        </td>
+                        <td>
+                            @Html.DropDownList("ClassID", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ClassID, "", new { @class = "text-danger" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.LabelFor(model => model.ModuleID, "ModuleID", htmlAttributes: new { @class = "control-label col-md-2" })
+                        </td>
+                        <td>
+                            @Html.DropDownList("ModuleID", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ModuleID, "", new { @class = "text-danger" })
+                        </td>
+                    </tr>
+
+                </table>
+                <div class="form-horizontal">
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.files, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.files, "", new { @type = "file", @multiple = "multiple" })
+                            @Html.ValidationMessageFor(model => model.files, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Upload" class="btn btn-primary" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10 text-success">
+                            @ViewBag.FileStatus
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-8">
+
+
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+        <script src="~/Scripts/jquery.validate.min.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+    </div>
+
+</body>
+</html>
